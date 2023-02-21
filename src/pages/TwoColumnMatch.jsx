@@ -7,49 +7,131 @@ import P from 'elements/P';
 
 import AppBody from 'layout/AppBody';
 
+const vocabList = [
+	{ en: 'book', es: 'el libro' },
+	{ en: 'comedy', es: 'la comedia' },
+	{ en: 'drama', es: 'el drama' },
+	{ en: 'fantasy', es: 'la literatura fantastica' },
+	{ en: 'genre', es: 'el género' },
+];
+
 export default function TwoColumnMatch() {
-	const [lValue, setLValue] = useState(null);
-	const [rValue, setRValue] = useState(null);
-	const debug = false;
+	const [correctCount, setCorrectCount] = useState(0);
+	const [lColumn, setLColumn] = useState([]);
+	const [lValue, setLValue] = useState({});
+	const [rColumn, setRColumn] = useState([]);
+	const [rValue, setRValue] = useState({});
+	const [wrongCount, setWrongCount] = useState(0);
+
+	function checkMatch() {
+		if (lValue.en && lValue.en === rValue.en && lValue.es === rValue.es) {
+			return true;
+		}
+		return false;
+	}
+
+	function checkMismatch() {
+		if (
+			lValue.en &&
+			rValue.en &&
+			(lValue.en !== rValue.en || lValue.es !== rValue.es)
+		) {
+			return true;
+		}
+		return false;
+	}
+
+	function clearSelected() {
+		setLValue({});
+		setRValue({});
+	}
+
+	function createLeftColumn(vocabulary) {
+		setLColumn(() => setLColumn(shuffle(vocabulary)));
+	}
+
+	function createRightColumn(vocabulary) {
+		setRColumn(() => setRColumn(shuffle(vocabulary)));
+	}
 
 	function selectLeftColumn(val) {
-		setLValue(val);
+		setLValue((prev) => (prev.en === val.en ? {} : val));
 	}
 
 	function selectRightColumn(val) {
-		setRValue(val);
+		setRValue((prev) => (prev.es === val.es ? {} : val));
+	}
+
+	function shuffle(array) {
+		if (!array || !array.length) {
+			console.error(
+				'Non-array argument passed to shuffle in the TwoColumnMatch component'
+			);
+			return;
+		}
+		let arr = [...array];
+		let currIndex = arr.length;
+		let randIndex = 0;
+		while (currIndex !== 0) {
+			randIndex = Math.floor(Math.random() * currIndex);
+			currIndex--;
+
+			[arr[currIndex], arr[randIndex]] = [arr[randIndex], arr[currIndex]];
+		}
+		return arr;
 	}
 
 	useEffect(() => {
-		console.log('lValue: ' + lValue + '; rValue: ' + rValue + ';');
+		if (checkMatch()) {
+			setCorrectCount((val) => val + 1);
+			clearSelected();
+		}
+		if (checkMismatch()) {
+			setWrongCount((val) => val + 1);
+			clearSelected();
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [lValue, rValue]);
+
+	useEffect(() => {
+		createLeftColumn(vocabList);
+		createRightColumn(vocabList);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return (
 		<AppBody>
 			<div className="w-full">
-				<H1 className="text-5xl font-bold text-center">Category Name</H1>
+				<H1>Literature</H1>
+				<P className="text-center">
+					Correct: {correctCount}; Wrong: {wrongCount};
+				</P>
 			</div>
 			<div className="inline-block w-1/2 p-1">
-				<MatchButton onClick={() => selectLeftColumn('Abc')}>Abc</MatchButton>
-				<MatchButton onClick={() => selectLeftColumn('Def')}>Def</MatchButton>
-				<MatchButton onClick={() => selectLeftColumn('Ghi')}>Ghi</MatchButton>
-				{debug && (
-					<P>
-						<code>lval: </code>
-						{lValue}
-					</P>
-				)}
+				{lColumn?.map((lc) => {
+					return (
+						<MatchButton
+							key={`${lc.en} ${lc.es}`}
+							languageCode="en"
+							onClick={() => selectLeftColumn(lc)}
+							selected={lc.en === lValue.en}
+							vocabObj={lc}
+						/>
+					);
+				})}
 			</div>
 			<div className="inline-block w-1/2 p-1">
-				<MatchButton onClick={() => selectRightColumn('Rst')}>Rst</MatchButton>
-				<MatchButton onClick={() => selectRightColumn('Uvw')}>Uvw</MatchButton>
-				<MatchButton onClick={() => selectRightColumn('Xyz')}>Xyz</MatchButton>
-				{debug && (
-					<P>
-						<code>rval: </code>
-						{rValue}
-					</P>
-				)}
+				{rColumn?.map((rc) => {
+					return (
+						<MatchButton
+							key={`${rc.en} ${rc.es}`}
+							languageCode="es"
+							onClick={() => selectRightColumn(rc)}
+							selected={rc.es === rValue.es}
+							vocabObj={rc}
+						/>
+					);
+				})}
 			</div>
 			<P className="text-center">
 				<Link to="/">Home</Link>

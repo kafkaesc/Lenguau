@@ -1,7 +1,6 @@
 {
 	"name": "lenguau",
 	"version": "0.1.0",
-	"homepage": "https://kafkaesc.github.io/Lenguau/",
 	"private": true,
 	"dependencies": {
 		"@testing-library/jest-dom": "^5.16.5",
