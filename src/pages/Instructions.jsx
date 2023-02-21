@@ -8,7 +8,7 @@ import LenguaToggle from 'layout/LenguaToggle';
 export default function Instructions() {
 	return (
 		<AppBody>
-			<H1 className="text-5xl font-bold text-center">Instructions</H1>
+			<H1>Instructions</H1>
 			<div className="text-center">
 				<LenguaToggle />
 			</div>

@@ -1,0 +1,19 @@
+{
+	"id": 3,
+	"title": { "en": "Literature", "es": "La Literatura" },
+	"vocabList": [
+		{ "en": "book", "es": "el libro" },
+		{ "en": "comedy", "es": "la comedia" },
+		{ "en": "drama", "es": "el drama" },
+		{ "en": "fantasy", "es": "la literatura fantastica" },
+		{ "en": "genre", "es": "el género" },
+		{ "en": "horror", "es": "el terror" },
+		{ "en": "literature", "es": "la literatura" },
+		{ "en": "novel", "es": "la novela" },
+		{ "en": "novella", "es": "la novela corta" },
+		{ "en": "satire", "es": "la sátira" },
+		{ "en": "short story", "es": "el cuento" },
+		{ "en": "science fiction", "es": "la ciencia ficción" },
+		{ "en": "tragedy", "es": "la tragedia" }
+	]
+}

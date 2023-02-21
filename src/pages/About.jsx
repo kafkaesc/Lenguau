@@ -8,7 +8,7 @@ import LenguaToggle from 'layout/LenguaToggle';
 export default function About() {
 	return (
 		<AppBody>
-			<H1 className="text-5xl font-bold text-center">About Component</H1>
+			<H1>About Component</H1>
 			<div className="text-center">
 				<LenguaToggle />
 			</div>
