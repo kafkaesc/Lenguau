@@ -5,6 +5,11 @@ export default function LenguaToggle() {
 	const toggleLengua = useLenguaUpdate();
 	return (
 		<button
+			aria-label={
+				lengua === 'en'
+					? 'English, click to toggle Spanish'
+					: 'Español, haz clic para inglés'
+			}
 			onClick={toggleLengua}
 			className="w-48 text-sm border-2 border-black"
 		>
