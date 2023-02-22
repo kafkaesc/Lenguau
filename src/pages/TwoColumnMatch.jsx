@@ -15,6 +15,15 @@ const vocabList = [
 	{ en: 'genre', es: 'el género' },
 ];
 
+/* This is meant as a temp fix, but doesn't work, huh. */
+const v2 = [
+	{ en: 'book', es: 'el libro' },
+	{ en: 'comedy', es: 'la comedia' },
+	{ en: 'drama', es: 'el drama' },
+	{ en: 'fantasy', es: 'la literatura fantastica' },
+	{ en: 'genre', es: 'el género' },
+];
+
 export default function TwoColumnMatch() {
 	const [correctCount, setCorrectCount] = useState(0);
 	const [lColumn, setLColumn] = useState([]);
@@ -23,35 +32,9 @@ export default function TwoColumnMatch() {
 	const [rValue, setRValue] = useState({});
 	const [wrongCount, setWrongCount] = useState(0);
 
-	function checkMatch() {
-		if (lValue.en && lValue.en === rValue.en && lValue.es === rValue.es) {
-			return true;
-		}
-		return false;
-	}
-
-	function checkMismatch() {
-		if (
-			lValue.en &&
-			rValue.en &&
-			(lValue.en !== rValue.en || lValue.es !== rValue.es)
-		) {
-			return true;
-		}
-		return false;
-	}
-
 	function clearSelected() {
 		setLValue({});
 		setRValue({});
-	}
-
-	function createLeftColumn(vocabulary) {
-		setLColumn(() => setLColumn(shuffle(vocabulary)));
-	}
-
-	function createRightColumn(vocabulary) {
-		setRColumn(() => setRColumn(shuffle(vocabulary)));
 	}
 
 	function selectLeftColumn(val) {
@@ -82,6 +65,24 @@ export default function TwoColumnMatch() {
 	}
 
 	useEffect(() => {
+		const checkMatch = () => {
+			if (lValue.en && lValue.en === rValue.en && lValue.es === rValue.es) {
+				return true;
+			}
+			return false;
+		};
+
+		const checkMismatch = () => {
+			if (
+				lValue.en &&
+				rValue.en &&
+				(lValue.en !== rValue.en || lValue.es !== rValue.es)
+			) {
+				return true;
+			}
+			return false;
+		};
+
 		if (checkMatch()) {
 			setCorrectCount((val) => val + 1);
 			clearSelected();
@@ -90,13 +91,11 @@ export default function TwoColumnMatch() {
 			setWrongCount((val) => val + 1);
 			clearSelected();
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [lValue, rValue]);
 
 	useEffect(() => {
-		createLeftColumn(vocabList);
-		createRightColumn(vocabList);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+		setLColumn(() => setLColumn(shuffle(vocabList)));
+		setRColumn(() => setRColumn(shuffle(v2)));
 	}, []);
 
 	return (
