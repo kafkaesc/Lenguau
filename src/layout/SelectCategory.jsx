@@ -1,24 +1,24 @@
 import LenguaSpan from 'elements/LenguaSpan';
-import MenuButton2 from 'elements/MenuButton2';
+import MenuButton from 'elements/MenuButton';
 
 export default function SelectCategory({ toggleMenu }) {
 	return (
 		<ul>
-			<MenuButton2 to="/Match/Around-Town">
+			<MenuButton to="/Match/Around-Town">
 				<LenguaSpan en="Around Town" es="En el Pueblo" />
-			</MenuButton2>
-			<MenuButton2 to="/Match/At-the-Office">
+			</MenuButton>
+			<MenuButton to="/Match/At-the-Office">
 				<LenguaSpan en="At the Office" es="En la Oficina" />
-			</MenuButton2>
-			<MenuButton2 to="Match/Colors">
+			</MenuButton>
+			<MenuButton to="Match/Colors">
 				<LenguaSpan en="Colors" es="De Colores" />
-			</MenuButton2>
-			<MenuButton2 to="/Match/Literature">
+			</MenuButton>
+			<MenuButton to="/Match/Literature">
 				<LenguaSpan en="Literature" es="La Literatura" />
-			</MenuButton2>
-			<MenuButton2 onClick={toggleMenu}>
+			</MenuButton>
+			<MenuButton onClick={toggleMenu}>
 				<LenguaSpan en="Back" es="Volver" />
-			</MenuButton2>
+			</MenuButton>
 		</ul>
 	);
 }
