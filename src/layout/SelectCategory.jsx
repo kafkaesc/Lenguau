@@ -10,6 +10,9 @@ export default function SelectCategory({ toggleMenu }) {
 			<MenuButton to="/Match">
 				<LenguaSpan en="At the Office" es="En la Oficina" />
 			</MenuButton>
+			<MenuButton to="/Match">
+				<LenguaSpan en="Literature" es="La Literatura" />
+			</MenuButton>
 			<MenuButton onClick={toggleMenu}>
 				<LenguaSpan en="Back" es="Volver" />
 			</MenuButton>

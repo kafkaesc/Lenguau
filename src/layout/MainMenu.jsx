@@ -22,7 +22,7 @@ export default function MainMenu() {
 						<LenguaSpan en="Instructions" es="Las Instrucciones" />
 					</MenuButton>
 					<MenuButton to="/About">
-						<LenguaSpan en="About" es="Sobre" />
+						<LenguaSpan en="About" es="Sobre Este Sitio" />
 					</MenuButton>
 				</ul>
 			) : (

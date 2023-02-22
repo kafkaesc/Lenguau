@@ -6,7 +6,7 @@ import P from 'elements/P';
 
 import AppBody from 'layout/AppBody';
 
-import TwoColumnMatchSingleColumn from 'components/TwoColumnMatchSingleColumn';
+import TcMatchSingleColumn from 'components/TcMatchSingleColumn';
 
 const vocabList = [
 	{ en: 'book', es: 'el libro' },
@@ -101,7 +101,7 @@ export default function TwoColumnMatch() {
 				</P>
 			</div>
 			<div className="inline-block w-1/2 p-1">
-				<TwoColumnMatchSingleColumn
+				<TcMatchSingleColumn
 					languageCode="en"
 					select={selectLeftColumn}
 					selectedVocab={lValue}
@@ -109,7 +109,7 @@ export default function TwoColumnMatch() {
 				/>
 			</div>
 			<div className="inline-block w-1/2 p-1">
-				<TwoColumnMatchSingleColumn
+				<TcMatchSingleColumn
 					languageCode="es"
 					select={selectRightColumn}
 					selectedVocab={rValue}

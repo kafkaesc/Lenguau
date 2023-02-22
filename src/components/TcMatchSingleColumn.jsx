@@ -1,6 +1,6 @@
-import MatchButton from 'elements/MatchButton';
+import MatchButton from 'components/MatchButton';
 
-export default function TwoColumnMatchSingleColumn({
+export default function TcMatchSingleColumn({
 	languageCode,
 	select,
 	selectedVocab,
