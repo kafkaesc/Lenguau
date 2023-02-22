@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 import LenguaSpan from 'elements/LenguaSpan';
-import SelectCategory from 'layout/SelectCategory';
 import MenuButton2 from 'elements/MenuButton2';
+import SelectCategory from 'layout/SelectCategory';
 
 export default function MainMenu() {
 	const [isMainMenu, setIsMainMenu] = useState(true);
