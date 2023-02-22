@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import H1 from 'elements/H1';
 import Link from 'elements/Link';
@@ -8,12 +9,30 @@ import AppBody from 'layout/AppBody';
 
 import TcMatchSingleColumn from 'components/TcMatchSingleColumn';
 
-const vocabList = [
+const literatureVocab = [
 	{ en: 'book', es: 'el libro' },
 	{ en: 'comedy', es: 'la comedia' },
 	{ en: 'drama', es: 'el drama' },
 	{ en: 'fantasy', es: 'la literatura fantastica' },
 	{ en: 'genre', es: 'el género' },
+];
+
+const officeVocab = [
+	{ en: 'boss', es: 'el jefe/la jefa' },
+	{ en: 'calculator', es: 'la calculadora' },
+	{ en: 'chair', es: 'la silla' },
+	{ en: 'computer', es: 'la computadora' },
+	{ en: 'coworker', es: 'el colega/la colega' },
+	{ en: 'desk', es: 'el escritorio' },
+];
+
+const townVocab = [
+	{ en: 'airport', es: 'el aeropuerto' },
+	{ en: 'bakery', es: 'la panadería' },
+	{ en: 'bank', es: 'el banco' },
+	{ en: 'bar', es: 'el bar' },
+	{ en: 'bookstore', es: 'la librería' },
+	{ en: 'bus stop', es: 'la parada de autobús' },
 ];
 
 export default function TwoColumnMatch() {
@@ -22,6 +41,8 @@ export default function TwoColumnMatch() {
 	const [lValue, setLValue] = useState({});
 	const [rValue, setRValue] = useState({});
 	const [wrongCount, setWrongCount] = useState(0);
+
+	const { categoryTitle } = useParams();
 
 	function clearSelected() {
 		setLValue({});
@@ -85,12 +106,29 @@ export default function TwoColumnMatch() {
 	}, [lValue, rValue]);
 
 	useEffect(() => {
+		let vocabList = [];
+		switch (categoryTitle) {
+			case 'Around-Town':
+				vocabList = [...townVocab];
+				break;
+			case 'At-the-Office':
+				vocabList = [...officeVocab];
+				break;
+			case 'Literature':
+				vocabList = [...literatureVocab];
+				break;
+			default:
+				console.error(
+					'No vocabulary to match the provided category title: ' + categoryTitle
+				);
+				break;
+		}
 		const newCols = {
 			l: shuffle(vocabList),
 			r: shuffle(vocabList),
 		};
 		setColumns(newCols);
-	}, []);
+	}, [categoryTitle]);
 
 	return (
 		<AppBody>
