@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 
 import H1 from 'elements/H1';
-import MatchButton from 'elements/MatchButton';
 import Link from 'elements/Link';
 import P from 'elements/P';
 
 import AppBody from 'layout/AppBody';
+
+import TwoColumnMatchSingleColumn from 'components/TwoColumnMatchSingleColumn';
 
 const vocabList = [
 	{ en: 'book', es: 'el libro' },
@@ -107,30 +108,20 @@ export default function TwoColumnMatch() {
 				</P>
 			</div>
 			<div className="inline-block w-1/2 p-1">
-				{lColumn?.map((lc) => {
-					return (
-						<MatchButton
-							key={`${lc.en} ${lc.es}`}
-							languageCode="en"
-							onClick={() => selectLeftColumn(lc)}
-							selected={lc.en === lValue.en}
-							vocabObj={lc}
-						/>
-					);
-				})}
+				<TwoColumnMatchSingleColumn
+					languageCode="en"
+					select={selectLeftColumn}
+					selectedVocab={lValue}
+					vocab={lColumn}
+				/>
 			</div>
 			<div className="inline-block w-1/2 p-1">
-				{rColumn?.map((rc) => {
-					return (
-						<MatchButton
-							key={`${rc.en} ${rc.es}`}
-							languageCode="es"
-							onClick={() => selectRightColumn(rc)}
-							selected={rc.es === rValue.es}
-							vocabObj={rc}
-						/>
-					);
-				})}
+				<TwoColumnMatchSingleColumn
+					languageCode="es"
+					select={selectRightColumn}
+					selectedVocab={rValue}
+					vocab={rColumn}
+				/>
 			</div>
 			<P className="text-center">
 				<Link to="/">Home</Link>
