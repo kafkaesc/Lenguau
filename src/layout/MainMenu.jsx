@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import LenguaSpan from 'elements/LenguaSpan';
-import MenuButton from 'elements/MenuButton';
+import MenuButton2 from 'elements/MenuButton2';
 import SelectCategory from 'layout/SelectCategory';
 
 export default function MainMenu() {
@@ -15,15 +15,15 @@ export default function MainMenu() {
 		<nav>
 			{isMainMenu ? (
 				<ul>
-					<MenuButton onClick={toggleMainMenu}>
+					<MenuButton2 onClick={toggleMainMenu}>
 						<LenguaSpan en="Select Category" es="Seleccionar una Categoría" />
-					</MenuButton>
-					<MenuButton to="/Instructions">
+					</MenuButton2>
+					<MenuButton2 to="/Instructions">
 						<LenguaSpan en="Instructions" es="Las Instrucciones" />
-					</MenuButton>
-					<MenuButton to="/About">
+					</MenuButton2>
+					<MenuButton2 to="/About">
 						<LenguaSpan en="About" es="Sobre Este Sitio" />
-					</MenuButton>
+					</MenuButton2>
 				</ul>
 			) : (
 				<SelectCategory toggleMenu={toggleMainMenu} />

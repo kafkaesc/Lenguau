@@ -21,7 +21,7 @@ const router = createHashRouter([
 			{ path: '/About', element: <About /> },
 			{ path: '/Home', element: <Home /> },
 			{ path: '/Instructions', element: <Instructions /> },
-			{ path: '/Match', element: <TwoColumnMatch /> },
+			{ path: '/Match/:categoryTitle', element: <TwoColumnMatch /> },
 		],
 	},
 ]);
