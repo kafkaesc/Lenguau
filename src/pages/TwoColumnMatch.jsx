@@ -9,6 +9,21 @@ import AppBody from 'layout/AppBody';
 
 import TcMatchSingleColumn from 'components/TcMatchSingleColumn';
 
+const colorsVocab = [
+	{ en: 'black', es: 'negro/a' },
+	{ en: 'blue', es: 'azul' },
+	{ en: 'gold', es: 'dorado/a' },
+	{ en: 'gray', es: 'gris' },
+	{ en: 'green', es: 'verde' },
+	{ en: 'orange', es: 'anaranjado/a' },
+	{ en: 'pink', es: 'rosado/a' },
+	{ en: 'purple', es: 'morado/a' },
+	{ en: 'yellow', es: 'amarillo/a' },
+	{ en: 'red', es: 'rojo/a' },
+	{ en: 'silver', es: 'plateaado/a' },
+	{ en: 'white', es: 'blanco/a' },
+];
+
 const literatureVocab = [
 	{ en: 'book', es: 'el libro' },
 	{ en: 'comedy', es: 'la comedia' },
@@ -113,6 +128,9 @@ export default function TwoColumnMatch() {
 				break;
 			case 'At-the-Office':
 				vocabList = [...officeVocab];
+				break;
+			case 'Colors':
+				vocabList = [...colorsVocab];
 				break;
 			case 'Literature':
 				vocabList = [...literatureVocab];
