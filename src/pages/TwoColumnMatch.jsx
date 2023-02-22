@@ -16,20 +16,10 @@ const vocabList = [
 	{ en: 'genre', es: 'el género' },
 ];
 
-/* This is meant as a temp fix, but doesn't work, huh. */
-const v2 = [
-	{ en: 'book', es: 'el libro' },
-	{ en: 'comedy', es: 'la comedia' },
-	{ en: 'drama', es: 'el drama' },
-	{ en: 'fantasy', es: 'la literatura fantastica' },
-	{ en: 'genre', es: 'el género' },
-];
-
 export default function TwoColumnMatch() {
+	const [columns, setColumns] = useState({ l: [], r: [] });
 	const [correctCount, setCorrectCount] = useState(0);
-	const [lColumn, setLColumn] = useState([]);
 	const [lValue, setLValue] = useState({});
-	const [rColumn, setRColumn] = useState([]);
 	const [rValue, setRValue] = useState({});
 	const [wrongCount, setWrongCount] = useState(0);
 
@@ -95,8 +85,11 @@ export default function TwoColumnMatch() {
 	}, [lValue, rValue]);
 
 	useEffect(() => {
-		setLColumn(() => setLColumn(shuffle(vocabList)));
-		setRColumn(() => setRColumn(shuffle(v2)));
+		const newCols = {
+			l: shuffle(vocabList),
+			r: shuffle(vocabList),
+		};
+		setColumns(newCols);
 	}, []);
 
 	return (
@@ -112,7 +105,7 @@ export default function TwoColumnMatch() {
 					languageCode="en"
 					select={selectLeftColumn}
 					selectedVocab={lValue}
-					vocab={lColumn}
+					vocab={columns.l}
 				/>
 			</div>
 			<div className="inline-block w-1/2 p-1">
@@ -120,7 +113,7 @@ export default function TwoColumnMatch() {
 					languageCode="es"
 					select={selectRightColumn}
 					selectedVocab={rValue}
-					vocab={rColumn}
+					vocab={columns.r}
 				/>
 			</div>
 			<P className="text-center">
