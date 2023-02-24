@@ -10,7 +10,7 @@ export default function CategoryMenu({ toggleMenu }) {
 			<MenuButton to="/Match/At-the-Office">
 				<LenguaSpan en="At the Office" es="En la Oficina" />
 			</MenuButton>
-			<MenuButton to="Match/Colors">
+			<MenuButton to="/Match/Colors">
 				<LenguaSpan en="Colors" es="De Colores" />
 			</MenuButton>
 			<MenuButton to="/Match/Literature">
