@@ -9,6 +9,7 @@ import About from 'pages/About';
 import Error from 'Error';
 import Home from 'pages/Home';
 import Instructions from 'pages/Instructions';
+import SelectCategory from 'pages/SelectCategory';
 import TwoColumnMatch from 'pages/TwoColumnMatch';
 
 const router = createHashRouter([
@@ -22,6 +23,7 @@ const router = createHashRouter([
 			{ path: '/Home', element: <Home /> },
 			{ path: '/Instructions', element: <Instructions /> },
 			{ path: '/Match/:categoryTitle', element: <TwoColumnMatch /> },
+			{ path: '/Select-Category', element: <SelectCategory /> },
 		],
 	},
 ]);

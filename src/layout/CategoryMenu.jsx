@@ -1,7 +1,7 @@
 import LenguaSpan from 'elements/LenguaSpan';
 import MenuButton from 'elements/MenuButton';
 
-export default function SelectCategory({ toggleMenu }) {
+export default function CategoryMenu({ toggleMenu }) {
 	return (
 		<ul>
 			<MenuButton to="/Match/Around-Town">
@@ -16,7 +16,7 @@ export default function SelectCategory({ toggleMenu }) {
 			<MenuButton to="/Match/Literature">
 				<LenguaSpan en="Literature" es="La Literatura" />
 			</MenuButton>
-			<MenuButton onClick={toggleMenu}>
+			<MenuButton to="/">
 				<LenguaSpan en="Back" es="Volver" />
 			</MenuButton>
 		</ul>
