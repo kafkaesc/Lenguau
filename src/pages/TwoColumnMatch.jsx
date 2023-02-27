@@ -111,11 +111,11 @@ export default function TwoColumnMatch() {
 		};
 
 		if (checkMatch()) {
-			setCorrectCount((val) => val + 1);
+			setCorrectCount((prev) => prev + 1);
 			clearSelected();
 		}
 		if (checkMismatch()) {
-			setWrongCount((val) => val + 1);
+			setWrongCount((prev) => prev + 1);
 			clearSelected();
 		}
 	}, [lValue, rValue]);
