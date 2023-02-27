@@ -3,6 +3,8 @@
 	"title": { "en": "Literature", "es": "La Literatura" },
 	"vocabList": [
 		{ "en": "book", "es": "el libro" },
+		{ "en": "chapter", "es": "el capítulo" },
+		{ "en": "character", "es": "el personaje" },
 		{ "en": "comedy", "es": "la comedia" },
 		{ "en": "drama", "es": "el drama" },
 		{ "en": "fantasy", "es": "la literatura fantastica" },
@@ -12,8 +14,10 @@
 		{ "en": "novel", "es": "la novela" },
 		{ "en": "novella", "es": "la novela corta" },
 		{ "en": "satire", "es": "la sátira" },
-		{ "en": "short story", "es": "el cuento" },
 		{ "en": "science fiction", "es": "la ciencia ficción" },
+		{ "en": "setting", "es": "el ambientación" },
+		{ "en": "short story", "es": "el cuento" },
+		{ "en": "theme", "es": "el tema" },
 		{ "en": "tragedy", "es": "la tragedia" }
 	]
 }
