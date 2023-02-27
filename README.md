@@ -14,3 +14,20 @@ The full code for this project can be viewed at https://github.com/kafkaesc/Leng
 1. Run `npm install`
 1. Run the Tailwind watcher `npx tailwindcss -i ./src/input.css -o ./src/output.css --watch`
 1. Run the app `npm start`
+
+# Lenguau
+
+Construido por Jared Hettinger
+
+Este proyecto es un trabajo en progreso. Va a ser un webapp para practicar vocabulario de español/inglés.
+
+Una versión operativo del sitio está en https://kafkaesc.github.io/Lenguau/
+
+El código completo para el proyecto está en https://github.com/kafkaesc/Lenguau/
+
+## Para Ejecutar
+
+1. Vaya al archivo del proyecto
+1. Ejecute `npm install`
+1. Ejecute el mirador de Tailwind `npx tailwindcss -i ./src/input.css -o ./src/output.css --watch`
+1. Ejecute el app `npm start`
