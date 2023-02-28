@@ -9,14 +9,14 @@ export default function GmButton({
 			{selected ? (
 				<button
 					{...props}
-					className="w-full h-full text-white border-2 border-black bg-blue"
+					className="w-full h-full text-white align-top border-2 border-black bg-blue"
 				>
 					{languageCode === 'en' ? vocabObj.en : vocabObj.es}
 				</button>
 			) : (
 				<button
 					{...props}
-					className="w-full h-full border-2 border-black hover:bg-gray"
+					className="w-full h-full align-top border-2 border-black hover:bg-gray"
 				>
 					{languageCode === 'en' ? vocabObj.en : vocabObj.es}
 				</button>
