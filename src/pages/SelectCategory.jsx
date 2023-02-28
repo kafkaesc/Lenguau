@@ -3,7 +3,7 @@ import LenguauTitle from 'layout/LenguauTitle';
 import LenguaToggle from 'layout/LenguaToggle';
 import CategoryMenu from 'layout/CategoryMenu';
 
-export default function Home() {
+export default function SelectCategory() {
 	return (
 		<AppBody>
 			<LenguauTitle />

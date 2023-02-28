@@ -1,19 +1,22 @@
+import { useLocation } from 'react-router-dom';
+
 import LenguaSpan from 'elements/LenguaSpan';
 import MenuButton from 'elements/MenuButton';
 
-export default function CategoryMenu({ toggleMenu }) {
+export default function CategoryMenu() {
+	const gamePath = useLocation().pathname.split('/')[1];
 	return (
 		<ul>
-			<MenuButton to="/Match/Around-Town">
+			<MenuButton to={`/${gamePath}/Around-Town`}>
 				<LenguaSpan en="Around Town" es="En el Pueblo" />
 			</MenuButton>
-			<MenuButton to="/Match/At-the-Office">
+			<MenuButton to={`/${gamePath}/At-the-Office`}>
 				<LenguaSpan en="At the Office" es="En la Oficina" />
 			</MenuButton>
-			<MenuButton to="/Match/Colors">
+			<MenuButton to={`/${gamePath}/Colors`}>
 				<LenguaSpan en="Colors" es="De Colores" />
 			</MenuButton>
-			<MenuButton to="/Match/Literature">
+			<MenuButton to={`/${gamePath}/Literature`}>
 				<LenguaSpan en="Literature" es="La Literatura" />
 			</MenuButton>
 			<MenuButton to="/">

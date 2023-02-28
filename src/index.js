@@ -21,11 +21,12 @@ const router = createHashRouter([
 		children: [
 			{ path: '/', element: <Home /> },
 			{ path: '/About', element: <About /> },
-			{ path: '/GridMatch', element: <GridMatch /> },
+			{ path: '/DuoMatch/Select-Category', element: <SelectCategory /> },
+			{ path: '/DuoMatch/:categoryTitle', element: <TwoColumnMatch /> },
+			{ path: '/GridMatch/Select-Category', element: <SelectCategory /> },
+			{ path: '/GridMatch/:categoryTitle', element: <GridMatch /> },
 			{ path: '/Home', element: <Home /> },
 			{ path: '/Instructions', element: <Instructions /> },
-			{ path: '/Match/:categoryTitle', element: <TwoColumnMatch /> },
-			{ path: '/Select-Category', element: <SelectCategory /> },
 		],
 	},
 ]);
