@@ -9,7 +9,7 @@ import P from 'elements/P';
 
 import AppBody from 'layout/AppBody';
 
-import TcMatchSingleColumn from 'components/TcMatchSingleColumn';
+import GmButton from 'components/GmButton';
 
 const colorsVocab = [
 	{ en: 'black', es: 'negro/a' },
@@ -18,28 +18,23 @@ const colorsVocab = [
 	{ en: 'gray', es: 'gris' },
 	{ en: 'green', es: 'verde' },
 	{ en: 'orange', es: 'anaranjado/a' },
-	{ en: 'pink', es: 'rosado/a' },
-	{ en: 'purple', es: 'morado/a' },
-	{ en: 'yellow', es: 'amarillo/a' },
-	{ en: 'red', es: 'rojo/a' },
-	{ en: 'silver', es: 'plateaado/a' },
-	{ en: 'white', es: 'blanco/a' },
 ];
 
 const literatureVocab = [
 	{ en: 'book', es: 'el libro' },
+	{ en: 'character', es: 'el personaje' },
 	{ en: 'comedy', es: 'la comedia' },
 	{ en: 'drama', es: 'el drama' },
-	{ en: 'fantasy', es: 'la literatura fantastica' },
 	{ en: 'genre', es: 'el género' },
+	{ en: 'literature', es: 'la literatura' },
 ];
 
 const officeVocab = [
-	{ en: 'boss', es: 'el jefe/la jefa' },
+	{ en: 'boss', es: 'el/la jefe/a' },
 	{ en: 'calculator', es: 'la calculadora' },
 	{ en: 'chair', es: 'la silla' },
 	{ en: 'computer', es: 'la computadora' },
-	{ en: 'coworker', es: 'el colega/la colega' },
+	{ en: 'coworker', es: 'el/la colega' },
 	{ en: 'desk', es: 'el escritorio' },
 ];
 
@@ -52,56 +47,39 @@ const townVocab = [
 	{ en: 'bus stop', es: 'la parada de autobús' },
 ];
 
-export default function TwoColumnMatch() {
-	const [columns, setColumns] = useState({ l: [], r: [] });
+export default function GridMatch() {
 	const [correctCount, setCorrectCount] = useState(0);
-	const [lValue, setLValue] = useState({});
-	const [rValue, setRValue] = useState({});
+	const [valueA, setValueA] = useState({});
+	const [valueB, setValueB] = useState({});
+	const [vocab, setVocab] = useState([]);
 	const [wrongCount, setWrongCount] = useState(0);
 
 	const { categoryTitle } = useParams();
 
-	function clearSelected() {
-		setLValue({});
-		setRValue({});
+	function clearSelection() {
+		setValueA({});
+		setValueB({});
 	}
 
-	function selectLeftColumn(val) {
-		setLValue((prev) => (prev.en === val.en ? {} : val));
-	}
-
-	function selectRightColumn(val) {
-		setRValue((prev) => (prev.es === val.es ? {} : val));
+	function selectValue(val, index) {
+		if (index === valueA.index) {
+			setValueA({});
+		} else if (!valueA.en) {
+			setValueA({ index: index, ...val });
+		} else {
+			setValueB({ index: index, ...val });
+		}
 	}
 
 	useEffect(() => {
-		const checkMatch = () => {
-			if (lValue.en && lValue.en === rValue.en && lValue.es === rValue.es) {
-				return true;
-			}
-			return false;
-		};
-
-		const checkMismatch = () => {
-			if (
-				lValue.en &&
-				rValue.en &&
-				(lValue.en !== rValue.en || lValue.es !== rValue.es)
-			) {
-				return true;
-			}
-			return false;
-		};
-
-		if (checkMatch()) {
+		if (valueA.en && valueB.en && valueA.en === valueB.en) {
 			setCorrectCount((prev) => prev + 1);
-			clearSelected();
-		}
-		if (checkMismatch()) {
+			clearSelection();
+		} else if (valueA.en && valueB.en && valueA.en !== valueB.en) {
 			setWrongCount((prev) => prev + 1);
-			clearSelected();
+			clearSelection();
 		}
-	}, [lValue, rValue]);
+	}, [valueA, valueB]);
 
 	useEffect(() => {
 		let vocabList = [];
@@ -124,38 +102,35 @@ export default function TwoColumnMatch() {
 				);
 				break;
 		}
-		const newCols = {
-			l: shuffle(vocabList),
-			r: shuffle(vocabList),
-		};
-		setColumns(newCols);
+		vocabList = vocabList.flatMap((cv) => {
+			return [
+				{ languageCode: 'en', ...cv },
+				{ languageCode: 'es', ...cv },
+			];
+		});
+		setVocab(shuffle(vocabList));
 	}, [categoryTitle]);
 
 	return (
 		<AppBody>
 			<div className="w-full">
 				<H1>
-					<LenguaSpan en="Duo Match" es="Combinar los Dúos" />
+					<LenguaSpan en="Grid Match" es="Combinar en la Cuadrícula" />
 				</H1>
 				<P className="text-center">
 					Correct: {correctCount}; Wrong: {wrongCount};
 				</P>
 			</div>
-			<div className="inline-block w-1/2 p-1">
-				<TcMatchSingleColumn
-					languageCode="en"
-					select={selectLeftColumn}
-					selectedVocab={lValue}
-					vocab={columns.l}
-				/>
-			</div>
-			<div className="inline-block w-1/2 p-1">
-				<TcMatchSingleColumn
-					languageCode="es"
-					select={selectRightColumn}
-					selectedVocab={rValue}
-					vocab={columns.r}
-				/>
+			<div className="w-full">
+				{vocab.map((vo, i) => (
+					<GmButton
+						key={`${i}-${vo.en}-${vo.es}`}
+						languageCode={vo.languageCode}
+						onClick={() => selectValue(vo, i)}
+						selected={i === valueA.index || i === valueB.index}
+						vocabObj={vo}
+					/>
+				))}
 			</div>
 			<P className="text-center">
 				<Link to="/">Home</Link>

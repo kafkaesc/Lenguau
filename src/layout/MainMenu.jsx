@@ -5,8 +5,11 @@ export default function MainMenu() {
 	return (
 		<nav>
 			<ul>
-				<MenuButton to="/Select-Category">
-					<LenguaSpan en="Select Category" es="Seleccionar una Categoría" />
+				<MenuButton to="/DuoMatch/Select-Category">
+					<LenguaSpan en="Duo Match" es="Combinar los Dúos" />
+				</MenuButton>
+				<MenuButton to="/GridMatch/Select-Category">
+					<LenguaSpan en="Grid Match" es="Combinar en la Cuadrícula" />
 				</MenuButton>
 				<MenuButton to="/Instructions">
 					<LenguaSpan en="Instructions" es="Las Instrucciones" />
