@@ -31,23 +31,14 @@ export default function GridMatch() {
 		setValueB({});
 	}
 
-	// TODO: Block selecting the same item twice (great hack for points tho)
-	// Undo the selection when a selected value is clicked again
-	function selectValue(val) {
-		if (!valueA.en) {
-			setValueA(val);
+	function selectValue(val, index) {
+		if (index === valueA.index) {
+			setValueA({});
+		} else if (!valueA.en) {
+			setValueA({ index: index, ...val });
 		} else {
-			setValueB(val);
+			setValueB({ index: index, ...val });
 		}
-	}
-
-	function isSelected(vocabObj) {
-		return (
-			(vocabObj.languageCode === 'en' &&
-				(vocabObj.en === valueA.en || vocabObj.en === valueB.en)) ||
-			(vocabObj.languageCode === 'es ' &&
-				(vocabObj.es === valueA.es || vocabObj.es === valueB.es))
-		);
 	}
 
 	useEffect(() => {
@@ -88,8 +79,8 @@ export default function GridMatch() {
 					<GmButton
 						key={`${i}-${vo.en}-${vo.es}`}
 						languageCode={vo.languageCode}
-						onClick={() => selectValue(vo)}
-						selected={isSelected(vo)}
+						onClick={() => selectValue(vo, i)}
+						selected={i === valueA.index || i === valueB.index}
 						vocabObj={vo}
 					/>
 				))}
