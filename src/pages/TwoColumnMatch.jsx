@@ -2,12 +2,11 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { shuffle } from 'utilities/GameUtil';
 
-import H1 from 'elements/H1';
 import LenguaSpan from 'elements/LenguaSpan';
-import Link from 'elements/Link';
 import P from 'elements/P';
 
 import AppBody from 'layout/AppBody';
+import PageTitle from 'layout/PageTitle';
 
 import TcMatchSingleColumn from 'components/TcMatchSingleColumn';
 
@@ -134,9 +133,9 @@ export default function TwoColumnMatch() {
 	return (
 		<AppBody>
 			<div className="w-full">
-				<H1>
+				<PageTitle>
 					<LenguaSpan en="Duo Match" es="Combinar los Dúos" />
-				</H1>
+				</PageTitle>
 				<P className="text-center">
 					Correct: {correctCount}; Wrong: {wrongCount};
 				</P>
@@ -157,9 +156,6 @@ export default function TwoColumnMatch() {
 					vocab={columns.r}
 				/>
 			</div>
-			<P className="text-center">
-				<Link to="/">Home</Link>
-			</P>
 		</AppBody>
 	);
 }

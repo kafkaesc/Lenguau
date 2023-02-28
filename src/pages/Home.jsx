@@ -1,14 +1,14 @@
 import AppBody from 'layout/AppBody';
-import LenguauTitle from 'layout/LenguauTitle';
 import LenguaToggle from 'layout/LenguaToggle';
 import MainMenu from 'layout/MainMenu';
-//import PageTitle from 'layout/PageTitle';
+import PageTitle from 'layout/PageTitle';
 
 export default function Home() {
 	return (
 		<AppBody>
-			{/*<PageTitle hasBack={true}>Lenguau</PageTitle>*/}
-			<LenguauTitle />
+			<PageTitle hideBack={true}>
+				Len<span className="underline">guau</span>
+			</PageTitle>
 			<div className="text-center">
 				<LenguaToggle />
 			</div>
