@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import H1 from 'elements/H1';
+import LenguaSpan from 'elements/LenguaSpan';
 import Link from 'elements/Link';
 import P from 'elements/P';
 
@@ -67,7 +68,9 @@ export default function GridMatch() {
 	return (
 		<AppBody>
 			<div className="w-full">
-				<H1>Grid Match</H1>
+				<H1>
+					<LenguaSpan en="Grid Match" es="Combinar en la Cuadrícula" />
+				</H1>
 			</div>
 			<div className="w-full">
 				{vocab.map((vo, i) => (
