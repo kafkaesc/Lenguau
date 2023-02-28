@@ -1,24 +1,20 @@
-import H1 from 'elements/H1';
 import LenguaSpan from 'elements/LenguaSpan';
-import Link from 'elements/Link';
 import P from 'elements/P';
 
 import AppBody from 'layout/AppBody';
 import LenguaToggle from 'layout/LenguaToggle';
+import PageTitle from 'layout/PageTitle';
 
 export default function Instructions() {
 	return (
 		<AppBody>
-			<H1>
+			<PageTitle>
 				<LenguaSpan en="Instructions" es="Las Instrucciones" />
-			</H1>
+			</PageTitle>
 			<div className="text-center">
 				<LenguaToggle />
 			</div>
 			<P>How to use this project to practice</P>
-			<P className="text-center">
-				<Link to="/">Home</Link>
-			</P>
 		</AppBody>
 	);
 }
