@@ -1,4 +1,4 @@
-export default function GridMatchButton({
+export default function GmButton({
 	languageCode,
 	selected,
 	vocabObj,

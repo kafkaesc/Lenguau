@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { shuffle } from 'utilities/GameUtil';
 
 import H1 from 'elements/H1';
 import LenguaSpan from 'elements/LenguaSpan';
@@ -7,7 +8,7 @@ import P from 'elements/P';
 
 import AppBody from 'layout/AppBody';
 
-import GridMatchButton from 'components/GridMatchButton';
+import GmButton from 'components/GmButton';
 
 const colorsVocab = [
 	{ en: 'black', es: 'negro/a' },
@@ -17,8 +18,6 @@ const colorsVocab = [
 	{ en: 'green', es: 'verde' },
 	{ en: 'orange', es: 'anaranjado/a' },
 ];
-
-const debug = true;
 
 export default function GridMatch() {
 	const [correctCount, setCorrectCount] = useState(0);
@@ -32,13 +31,23 @@ export default function GridMatch() {
 		setValueB({});
 	}
 
-	// TODO: Undo the selection when a selected value is clicked again
+	// TODO: Block selecting the same item twice (great hack for points tho)
+	// Undo the selection when a selected value is clicked again
 	function selectValue(val) {
 		if (!valueA.en) {
 			setValueA(val);
 		} else {
 			setValueB(val);
 		}
+	}
+
+	function isSelected(vocabObj) {
+		return (
+			(vocabObj.languageCode === 'en' &&
+				(vocabObj.en === valueA.en || vocabObj.en === valueB.en)) ||
+			(vocabObj.languageCode === 'es ' &&
+				(vocabObj.es === valueA.es || vocabObj.es === valueB.es))
+		);
 	}
 
 	useEffect(() => {
@@ -60,8 +69,7 @@ export default function GridMatch() {
 					{ languageCode: 'es', ...cv },
 				];
 			});
-			// TODO: Shuffle the shuffledVocab
-			setVocab(shuffledVocab);
+			setVocab(shuffle(shuffledVocab));
 		}
 	}, [vocab]);
 
@@ -71,25 +79,21 @@ export default function GridMatch() {
 				<H1>
 					<LenguaSpan en="Grid Match" es="Combinar en la Cuadrícula" />
 				</H1>
+				<P className="text-center">
+					Correct: {correctCount}; Wrong: {wrongCount};
+				</P>
 			</div>
 			<div className="w-full">
 				{vocab.map((vo, i) => (
-					<GridMatchButton
+					<GmButton
 						key={`${i}-${vo.en}-${vo.es}`}
 						languageCode={vo.languageCode}
 						onClick={() => selectValue(vo)}
+						selected={isSelected(vo)}
 						vocabObj={vo}
 					/>
 				))}
 			</div>
-			{debug && (
-				<P>
-					<code>
-						Correct: {correctCount}; Wrong: {wrongCount}; Debug: A: {valueA.en}-
-						{valueA.es}; B: {valueB.en}-{valueB.es};
-					</code>
-				</P>
-			)}
 			<P className="text-center">
 				<Link to="/">Home</Link>
 			</P>

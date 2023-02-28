@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { shuffle } from 'utilities/GameUtil';
 
 import H1 from 'elements/H1';
+import LenguaSpan from 'elements/LenguaSpan';
 import Link from 'elements/Link';
 import P from 'elements/P';
 
@@ -72,25 +74,6 @@ export default function TwoColumnMatch() {
 		setRValue((prev) => (prev.es === val.es ? {} : val));
 	}
 
-	function shuffle(array) {
-		if (!array || !array.length) {
-			console.error(
-				'Non-array argument passed to shuffle in the TwoColumnMatch component'
-			);
-			return;
-		}
-		let arr = [...array];
-		let currIndex = arr.length;
-		let randIndex = 0;
-		while (currIndex !== 0) {
-			randIndex = Math.floor(Math.random() * currIndex);
-			currIndex--;
-
-			[arr[currIndex], arr[randIndex]] = [arr[randIndex], arr[currIndex]];
-		}
-		return arr;
-	}
-
 	useEffect(() => {
 		const checkMatch = () => {
 			if (lValue.en && lValue.en === rValue.en && lValue.es === rValue.es) {
@@ -151,7 +134,9 @@ export default function TwoColumnMatch() {
 	return (
 		<AppBody>
 			<div className="w-full">
-				<H1>Literature</H1>
+				<H1>
+					<LenguaSpan en="Duo Match" es="Combinar los Dúos" />
+				</H1>
 				<P className="text-center">
 					Correct: {correctCount}; Wrong: {wrongCount};
 				</P>
