@@ -7,9 +7,10 @@ export function useLenguaApi() {
 }
 
 export function LenguaApiProvider({ children }) {
-	// TODO: Return different API paths based on dev or release
+	// TODO: Setup API online, return different API path for production based on that release
+	const lenguaApiEndpoint = process.env.REACT_APP_LENGUA_API_ENDPOINT;
 	return (
-		<LenguaApiContext.Provider value={'http://localhost:3010/'}>
+		<LenguaApiContext.Provider value={lenguaApiEndpoint}>
 			{children}
 		</LenguaApiContext.Provider>
 	);
