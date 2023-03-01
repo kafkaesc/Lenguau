@@ -53,6 +53,7 @@ const townVocab = [
 
 export default function TwoColumnMatch() {
 	const [columns, setColumns] = useState({ l: [], r: [] });
+	const [clearedCount, setClearedCount] = useState(0);
 	const [correctCount, setCorrectCount] = useState(0);
 	const [lValue, setLValue] = useState({});
 	const [rValue, setRValue] = useState({});
@@ -94,6 +95,9 @@ export default function TwoColumnMatch() {
 
 		if (checkMatch()) {
 			setCorrectCount((prev) => prev + 1);
+			lValue.cleared = true;
+			rValue.cleared = true;
+			setClearedCount((prev) => prev + 1);
 			clearSelected();
 		}
 		if (checkMismatch()) {
@@ -101,6 +105,23 @@ export default function TwoColumnMatch() {
 			clearSelected();
 		}
 	}, [lValue, rValue]);
+
+	useEffect(() => {
+		if (clearedCount === columns.l.length) {
+			const newColumns = {};
+			newColumns.l = columns.l.map((vo) => {
+				return { ...vo, cleared: false };
+			});
+			newColumns.r = columns.r.map((vo) => {
+				return { ...vo, cleared: false };
+			});
+			setClearedCount(0);
+			setColumns(newColumns);
+		}
+		// TODO: Make this load n rows at a time from a vocabulary list.
+		// The use of columns.l.length will be replaced with a const value.
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [clearedCount]);
 
 	useEffect(() => {
 		let vocabList = [];

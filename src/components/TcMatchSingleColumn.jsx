@@ -10,6 +10,7 @@ export default function TcMatchSingleColumn({
 		<>
 			{vocab.map((vo, i) => (
 				<TcMatchButton
+					cleared={vo.cleared}
 					key={i}
 					languageCode={languageCode}
 					onClick={() => select(vo)}
