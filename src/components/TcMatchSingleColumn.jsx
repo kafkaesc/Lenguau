@@ -1,4 +1,4 @@
-import MatchButton from 'components/MatchButton';
+import TcMatchButton from 'components/TcMatchButton';
 
 export default function TcMatchSingleColumn({
 	languageCode,
@@ -9,7 +9,7 @@ export default function TcMatchSingleColumn({
 	return (
 		<>
 			{vocab.map((vo, i) => (
-				<MatchButton
+				<TcMatchButton
 					key={i}
 					languageCode={languageCode}
 					onClick={() => select(vo)}

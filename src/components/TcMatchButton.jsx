@@ -1,4 +1,4 @@
-export default function MatchButton({
+export default function TcMatchButton({
 	languageCode,
 	selected,
 	vocabObj,

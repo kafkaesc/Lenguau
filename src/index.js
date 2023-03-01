@@ -7,6 +7,7 @@ import { createHashRouter, RouterProvider } from 'react-router-dom';
 
 import About from 'pages/About';
 import Error from 'Error';
+import GridMatch from 'pages/GridMatch';
 import Home from 'pages/Home';
 import Instructions from 'pages/Instructions';
 import SelectCategory from 'pages/SelectCategory';
@@ -20,10 +21,12 @@ const router = createHashRouter([
 		children: [
 			{ path: '/', element: <Home /> },
 			{ path: '/About', element: <About /> },
+			{ path: '/DuoMatch/Select-Category', element: <SelectCategory /> },
+			{ path: '/DuoMatch/:categoryTitle', element: <TwoColumnMatch /> },
+			{ path: '/GridMatch/Select-Category', element: <SelectCategory /> },
+			{ path: '/GridMatch/:categoryTitle', element: <GridMatch /> },
 			{ path: '/Home', element: <Home /> },
 			{ path: '/Instructions', element: <Instructions /> },
-			{ path: '/Match/:categoryTitle', element: <TwoColumnMatch /> },
-			{ path: '/Select-Category', element: <SelectCategory /> },
 		],
 	},
 ]);

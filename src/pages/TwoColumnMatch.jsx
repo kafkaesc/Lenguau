@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useLenguaApi } from 'context/LenguaApiContext';
+import { shuffle } from 'utilities/GameUtil';
 
-import H1 from 'elements/H1';
 import LenguaSpan from 'elements/LenguaSpan';
-import Link from 'elements/Link';
 import P from 'elements/P';
 
 import AppBody from 'layout/AppBody';
+import PageTitle from 'layout/PageTitle';
 
 import TcMatchSingleColumn from 'components/TcMatchSingleColumn';
 
@@ -35,25 +35,6 @@ export default function TwoColumnMatch() {
 		setRValue((prev) => (prev.es === val.es ? {} : val));
 	}
 
-	function shuffle(array) {
-		if (!array || !array.length) {
-			console.error(
-				'Non-array argument passed to shuffle in the TwoColumnMatch component'
-			);
-			return;
-		}
-		let arr = [...array];
-		let currIndex = arr.length;
-		let randIndex = 0;
-		while (currIndex !== 0) {
-			randIndex = Math.floor(Math.random() * currIndex);
-			currIndex--;
-
-			[arr[currIndex], arr[randIndex]] = [arr[randIndex], arr[currIndex]];
-		}
-		return arr;
-	}
-
 	useEffect(() => {
 		const checkMatch = () => {
 			if (lValue.en && lValue.en === rValue.en && lValue.es === rValue.es) {
@@ -74,11 +55,11 @@ export default function TwoColumnMatch() {
 		};
 
 		if (checkMatch()) {
-			setCorrectCount((val) => val + 1);
+			setCorrectCount((prev) => prev + 1);
 			clearSelected();
 		}
 		if (checkMismatch()) {
-			setWrongCount((val) => val + 1);
+			setWrongCount((prev) => prev + 1);
 			clearSelected();
 		}
 	}, [lValue, rValue]);
@@ -99,9 +80,9 @@ export default function TwoColumnMatch() {
 	return (
 		<AppBody>
 			<div className="w-full">
-				<H1>
+				<PageTitle>
 					<LenguaSpan en={vocabularyTitle.en} es={vocabularyTitle.es} />
-				</H1>
+				</PageTitle>
 				<P className="text-center">
 					Correct: {correctCount}; Wrong: {wrongCount};
 				</P>
@@ -122,9 +103,6 @@ export default function TwoColumnMatch() {
 					vocab={columns.r}
 				/>
 			</div>
-			<P className="text-center">
-				<Link to="/">Home</Link>
-			</P>
 		</AppBody>
 	);
 }

@@ -1,12 +1,15 @@
 import AppBody from 'layout/AppBody';
-import LenguauTitle from 'layout/LenguauTitle';
-import LenguaToggle from 'layout/LenguaToggle';
 import CategoryMenu from 'layout/CategoryMenu';
+import LenguaSpan from 'elements/LenguaSpan';
+import LenguaToggle from 'layout/LenguaToggle';
+import PageTitle from 'layout/PageTitle';
 
-export default function Home() {
+export default function SelectCategory() {
 	return (
 		<AppBody>
-			<LenguauTitle />
+			<PageTitle>
+				<LenguaSpan en="Select a Category" es="Selecionar una Categoría" />
+			</PageTitle>
 			<div className="text-center">
 				<LenguaToggle />
 			</div>

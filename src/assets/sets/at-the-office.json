@@ -2,11 +2,11 @@
 	"id": 2,
 	"title": { "en": "At the Office", "es": "En la Oficina" },
 	"vocabList": [
-		{ "en": "boss", "es": "el jefe/la jefa" },
+		{ "en": "boss", "es": "el/la jefe/a" },
 		{ "en": "calculator", "es": "la calculadora" },
 		{ "en": "chair", "es": "la silla" },
 		{ "en": "computer", "es": "la computadora" },
-		{ "en": "coworker", "es": "el colega/la colega" },
+		{ "en": "coworker", "es": "el/la colega" },
 		{ "en": "desk", "es": "el escritorio" },
 		{ "en": "email", "es": "el correo electrónico" },
 		{ "en": "job", "es": "el trabajo" },
