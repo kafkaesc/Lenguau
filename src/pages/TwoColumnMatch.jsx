@@ -52,8 +52,8 @@ const townVocab = [
 ];
 
 export default function TwoColumnMatch() {
-	const [columns, setColumns] = useState({ l: [], r: [] });
 	const [clearedCount, setClearedCount] = useState(0);
+	const [columns, setColumns] = useState({ l: [], r: [] });
 	const [correctCount, setCorrectCount] = useState(0);
 	const [lValue, setLValue] = useState({});
 	const [rValue, setRValue] = useState({});

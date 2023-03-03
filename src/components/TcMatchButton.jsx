@@ -6,9 +6,12 @@ export default function TcMatchButton({
 	...props
 }) {
 	return cleared ? (
-		<div className="inline-block w-full p-2 my-1 text-center border-2 border-faded text-faded">
+		<button
+			className="inline-block w-full p-2 my-1 text-center border-2 border-faded text-faded"
+			disabled={true}
+		>
 			{languageCode === 'en' ? vocabObj.en : vocabObj.es}
-		</div>
+		</button>
 	) : selected ? (
 		<button
 			{...props}
