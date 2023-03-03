@@ -8,7 +8,7 @@ import P from 'elements/P';
 import AppBody from 'layout/AppBody';
 import PageTitle from 'layout/PageTitle';
 
-import GmButton from 'components/GmButton';
+import GmGrid from 'components/GmGrid';
 
 const colorsVocab = [
 	{ en: 'black', es: 'negro/a' },
@@ -47,6 +47,7 @@ const townVocab = [
 ];
 
 export default function GridMatch() {
+	const [clearedCount, setClearedCount] = useState(0);
 	const [correctCount, setCorrectCount] = useState(0);
 	const [valueA, setValueA] = useState({});
 	const [valueB, setValueB] = useState({});
@@ -71,16 +72,6 @@ export default function GridMatch() {
 	}
 
 	useEffect(() => {
-		if (valueA.en && valueB.en && valueA.en === valueB.en) {
-			setCorrectCount((prev) => prev + 1);
-			clearSelection();
-		} else if (valueA.en && valueB.en && valueA.en !== valueB.en) {
-			setWrongCount((prev) => prev + 1);
-			clearSelection();
-		}
-	}, [valueA, valueB]);
-
-	useEffect(() => {
 		let vocabList = [];
 		switch (categoryTitle) {
 			case 'Around-Town':
@@ -103,12 +94,51 @@ export default function GridMatch() {
 		}
 		vocabList = vocabList.flatMap((cv) => {
 			return [
-				{ languageCode: 'en', ...cv },
-				{ languageCode: 'es', ...cv },
+				{ cleared: false, languageCode: 'en', ...cv },
+				{ cleared: false, languageCode: 'es', ...cv },
 			];
 		});
 		setVocab(shuffle(vocabList));
 	}, [categoryTitle]);
+
+	useEffect(() => {
+		function tagCleared() {
+			const newVocab = vocab.map((vo) => {
+				if (
+					(vo.languageCode === valueA.languageCode && vo.en === valueA.en) ||
+					(vo.languageCode === valueB.languageCode && vo.en === valueB.en)
+				) {
+					vo.cleared = true;
+				}
+				return vo;
+			});
+			setVocab(newVocab);
+		}
+
+		if (valueA.en && valueB.en && valueA.en === valueB.en) {
+			setCorrectCount((prev) => prev + 1);
+			setClearedCount((prev) => prev + 1);
+			tagCleared();
+			clearSelection();
+		} else if (valueA.en && valueB.en && valueA.en !== valueB.en) {
+			setWrongCount((prev) => prev + 1);
+			clearSelection();
+		}
+	}, [valueA, valueB, vocab]);
+
+	useEffect(() => {
+		if (vocab.length && clearedCount * 2 === vocab.length) {
+			const newVocab = vocab.map((vo) => {
+				vo.cleared = false;
+				return vo;
+			});
+			setVocab(newVocab);
+			setClearedCount(0);
+		}
+		// TODO: Make this load n rows at a time from a vocabulary list.
+		// The use of vocab.length will be replaced with a const value.
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [clearedCount]);
 
 	return (
 		<AppBody>
@@ -121,15 +151,12 @@ export default function GridMatch() {
 				</P>
 			</div>
 			<div className="w-full">
-				{vocab.map((vo, i) => (
-					<GmButton
-						key={`${i}-${vo.en}-${vo.es}`}
-						languageCode={vo.languageCode}
-						onClick={() => selectValue(vo, i)}
-						selected={i === valueA.index || i === valueB.index}
-						vocabObj={vo}
-					/>
-				))}
+				<GmGrid
+					select={selectValue}
+					selectedA={valueA}
+					selectedB={valueB}
+					vocab={vocab}
+				/>
 			</div>
 		</AppBody>
 	);
