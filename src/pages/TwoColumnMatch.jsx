@@ -105,6 +105,7 @@ export default function TwoColumnMatch() {
 			r: shuffle(vocabList),
 		};
 		setColumns(newCols);
+		setFinished(false);
 		setRound(1);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [categoryTitle]);
