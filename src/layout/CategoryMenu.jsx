@@ -19,6 +19,9 @@ export default function CategoryMenu() {
 			<MenuButton to={`/${gamePath}/Literature`}>
 				<LenguaSpan en="Literature" es="La Literatura" />
 			</MenuButton>
+			{/*<MenuButton to={`/${gamePath}/Top-50-Verbs`}>
+				<LenguaSpan en="Top 50 Verbs" es="50 Verbos Principales" />
+			</MenuButton>*/}
 		</ul>
 	);
 }
