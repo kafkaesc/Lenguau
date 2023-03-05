@@ -1,3 +1,5 @@
+import { shuffle } from 'utilities/GameUtil';
+
 const colorsVocab = [
 	{ en: 'black', es: 'negro/a' },
 	{ en: 'blue', es: 'azul' },
@@ -79,19 +81,19 @@ export function useVocabBox(categoryTitle, roundSize) {
 	__roundSize = roundSize;
 	switch (categoryTitle) {
 		case 'Around-Town':
-			__vocabBox = [...townVocab];
+			__vocabBox = shuffle([...townVocab]);
 			loaded = true;
 			break;
 		case 'At-the-Office':
-			__vocabBox = [...officeVocab];
+			__vocabBox = shuffle([...officeVocab]);
 			loaded = true;
 			break;
 		case 'Colors':
-			__vocabBox = [...colorsVocab];
+			__vocabBox = shuffle([...colorsVocab]);
 			loaded = true;
 			break;
 		case 'Literature':
-			__vocabBox = [...literatureVocab];
+			__vocabBox = shuffle([...literatureVocab]);
 			loaded = true;
 			break;
 		default:
