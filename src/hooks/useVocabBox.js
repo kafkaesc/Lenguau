@@ -139,8 +139,9 @@ const townVocab = [
 	{ en: 'university', es: 'la universidad' },
 ];
 
-let __vocabBox = [];
+let __categoryTitle = null;
 let __roundSize = 0;
+let __vocabBox = [];
 
 function getRound(round) {
 	console.log('round: ', round);
@@ -152,45 +153,40 @@ function getRound(round) {
 	if (__vocabBox.length > 0) {
 		const start = (round - 1) * __roundSize;
 		const end = start + __roundSize;
-
 		return __vocabBox.slice(start, end);
 	}
 }
 
 function hasRound(round) {
-	return (round - 1) * __roundSize >= __vocabBox.length ? false : true;
+	return !((round - 1) * __roundSize >= __vocabBox.length);
 }
 
 // TODO: Update this to call the API.
 export function useVocabBox(categoryTitle, roundSize) {
-	let loaded = false;
-	__roundSize = roundSize;
-	switch (categoryTitle) {
-		case 'Around-Town':
-			__vocabBox = shuffle([...townVocab]);
-			loaded = true;
-			break;
-		case 'At-the-Office':
-			__vocabBox = shuffle([...officeVocab]);
-			loaded = true;
-			break;
-		case 'Colors':
-			__vocabBox = shuffle([...colorsVocab]);
-			loaded = true;
-			break;
-		case 'Literature':
-			__vocabBox = shuffle([...literatureVocab]);
-			loaded = true;
-			break;
-		case 'Top-50-Verbs':
-			__vocabBox = shuffle([...top50Verbs]);
-			loaded = true;
-			break;
-		default:
-			console.error(
-				'No vocabulary to match the provided category title: ' + categoryTitle
-			);
-			break;
+	if (categoryTitle !== __categoryTitle || roundSize !== __roundSize) {
+		__roundSize = roundSize;
+		switch (categoryTitle) {
+			case 'Around-Town':
+				__vocabBox = shuffle([...townVocab]);
+				break;
+			case 'At-the-Office':
+				__vocabBox = shuffle([...officeVocab]);
+				break;
+			case 'Colors':
+				__vocabBox = shuffle([...colorsVocab]);
+				break;
+			case 'Literature':
+				__vocabBox = shuffle([...literatureVocab]);
+				break;
+			case 'Top-50-Verbs':
+				__vocabBox = shuffle([...top50Verbs]);
+				break;
+			default:
+				console.error(
+					'No vocabulary to match the provided category title: ' + categoryTitle
+				);
+				break;
+		}
 	}
-	return { getRound, hasRound, loaded };
+	return { getRound, hasRound };
 }
