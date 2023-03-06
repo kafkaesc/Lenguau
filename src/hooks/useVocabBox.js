@@ -12,7 +12,7 @@ const colorsVocab = [
 	{ en: 'purple', es: 'morado/a' },
 	{ en: 'yellow', es: 'amarillo/a' },
 	{ en: 'red', es: 'rojo/a' },
-	{ en: 'silver', es: 'plateaado/a' },
+	{ en: 'silver', es: 'plateado/a' },
 	{ en: 'white', es: 'blanco/a' },
 ];
 
@@ -60,7 +60,7 @@ const top50Verbs = [
 	{ en: 'to accept', es: 'aceptar' },
 	{ en: 'to arrive', es: 'llegar' },
 	{ en: 'to be (innate)', es: 'ser' },
-	{ en: 'to ber (state', es: 'estar' },
+	{ en: 'to be (state)', es: 'estar' },
 	{ en: 'to begin', es: 'comenzar' },
 	{ en: 'to believe', es: 'creer' },
 	{ en: 'to call', es: 'llamar' },
