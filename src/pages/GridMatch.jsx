@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { shuffle } from 'utilities/GameUtil';
+import { useVocabBox } from 'hooks/useVocabBox';
 
 import LenguaSpan from 'elements/LenguaSpan';
 import P from 'elements/P';
@@ -10,51 +11,20 @@ import PageTitle from 'layout/PageTitle';
 
 import GmGrid from 'components/GmGrid';
 
-const colorsVocab = [
-	{ en: 'black', es: 'negro/a' },
-	{ en: 'blue', es: 'azul' },
-	{ en: 'gold', es: 'dorado/a' },
-	{ en: 'gray', es: 'gris' },
-	{ en: 'green', es: 'verde' },
-	{ en: 'orange', es: 'anaranjado/a' },
-];
-
-const literatureVocab = [
-	{ en: 'book', es: 'el libro' },
-	{ en: 'character', es: 'el personaje' },
-	{ en: 'comedy', es: 'la comedia' },
-	{ en: 'drama', es: 'el drama' },
-	{ en: 'genre', es: 'el género' },
-	{ en: 'literature', es: 'la literatura' },
-];
-
-const officeVocab = [
-	{ en: 'boss', es: 'el/la jefe/a' },
-	{ en: 'calculator', es: 'la calculadora' },
-	{ en: 'chair', es: 'la silla' },
-	{ en: 'computer', es: 'la computadora' },
-	{ en: 'coworker', es: 'el/la colega' },
-	{ en: 'desk', es: 'el escritorio' },
-];
-
-const townVocab = [
-	{ en: 'airport', es: 'el aeropuerto' },
-	{ en: 'bakery', es: 'la panadería' },
-	{ en: 'bank', es: 'el banco' },
-	{ en: 'bar', es: 'el bar' },
-	{ en: 'bookstore', es: 'la librería' },
-	{ en: 'bus stop', es: 'la parada de autobús' },
-];
+const ROUND_SIZE = 6;
 
 export default function GridMatch() {
 	const [clearedCount, setClearedCount] = useState(0);
 	const [correctCount, setCorrectCount] = useState(0);
+	const [finished, setFinished] = useState(false);
+	const [round, setRound] = useState(1);
 	const [valueA, setValueA] = useState({});
 	const [valueB, setValueB] = useState({});
 	const [vocab, setVocab] = useState([]);
 	const [wrongCount, setWrongCount] = useState(0);
 
 	const { categoryTitle } = useParams();
+	const vocabBox = useVocabBox(categoryTitle, ROUND_SIZE);
 
 	function clearSelection() {
 		setValueA({});
@@ -72,33 +42,17 @@ export default function GridMatch() {
 	}
 
 	useEffect(() => {
-		let vocabList = [];
-		switch (categoryTitle) {
-			case 'Around-Town':
-				vocabList = [...townVocab];
-				break;
-			case 'At-the-Office':
-				vocabList = [...officeVocab];
-				break;
-			case 'Colors':
-				vocabList = [...colorsVocab];
-				break;
-			case 'Literature':
-				vocabList = [...literatureVocab];
-				break;
-			default:
-				console.error(
-					'No vocabulary to match the provided category title: ' + categoryTitle
-				);
-				break;
-		}
-		vocabList = vocabList.flatMap((cv) => {
+		let vocabList = vocabBox.getRound(1).map((vo) => {
+			return { ...vo, cleared: false };
+		});
+		vocabList = vocabList.flatMap((vo) => {
 			return [
-				{ cleared: false, languageCode: 'en', ...cv },
-				{ cleared: false, languageCode: 'es', ...cv },
+				{ cleared: false, languageCode: 'en', ...vo },
+				{ cleared: false, languageCode: 'es', ...vo },
 			];
 		});
 		setVocab(shuffle(vocabList));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [categoryTitle]);
 
 	useEffect(() => {
@@ -128,15 +82,21 @@ export default function GridMatch() {
 
 	useEffect(() => {
 		if (vocab.length && clearedCount * 2 === vocab.length) {
-			const newVocab = vocab.map((vo) => {
-				vo.cleared = false;
-				return vo;
-			});
-			setVocab(newVocab);
-			setClearedCount(0);
+			if (vocabBox.hasRound(round + 1)) {
+				let newVocab = vocabBox.getRound(round + 1);
+				newVocab = newVocab.flatMap((vo) => {
+					return [
+						{ cleared: false, languageCode: 'en', ...vo },
+						{ cleared: false, languageCode: 'es', ...vo },
+					];
+				});
+				setVocab(shuffle(newVocab));
+				setClearedCount(0);
+				setRound((prev) => prev + 1);
+			} else {
+				setFinished(true);
+			}
 		}
-		// TODO: Make this load n rows at a time from a vocabulary list.
-		// The use of vocab.length will be replaced with a const value.
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [clearedCount]);
 
@@ -147,16 +107,20 @@ export default function GridMatch() {
 					<LenguaSpan en="Grid Match" es="Combinar en la Cuadrícula" />
 				</PageTitle>
 				<P className="text-center">
-					Correct: {correctCount}; Wrong: {wrongCount};
+					Round: {round}; Correct: {correctCount}; Wrong: {wrongCount};
 				</P>
 			</div>
 			<div className="w-full">
-				<GmGrid
-					select={selectValue}
-					selectedA={valueA}
-					selectedB={valueB}
-					vocab={vocab}
-				/>
+				{finished ? (
+					<P className="text-center">Finished!</P>
+				) : (
+					<GmGrid
+						select={selectValue}
+						selectedA={valueA}
+						selectedB={valueB}
+						vocab={vocab}
+					/>
+				)}
 			</div>
 		</AppBody>
 	);

@@ -121,7 +121,7 @@ export default function TwoColumnMatch() {
 				</P>
 			</div>
 			{finished ? (
-				<P className="text-center">Victory!!</P>
+				<P className="text-center">Finished!</P>
 			) : (
 				<>
 					<div className="inline-block w-1/2 p-1">
