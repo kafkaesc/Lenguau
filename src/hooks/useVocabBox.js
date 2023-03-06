@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { shuffle } from 'utilities/GameUtil';
 
 const colorsVocab = [
@@ -139,47 +140,48 @@ const townVocab = [
 	{ en: 'university', es: 'la universidad' },
 ];
 
-let __categoryTitle = null;
-let __roundSize = 0;
-let __vocabBox = [];
-
-function getRound(round) {
-	console.log('round: ', round);
-	if (__vocabBox.length === 0) {
-		console.error(
-			'pop was called on the __vocabBox, but there is no data to return.'
-		);
-	}
-	if (__vocabBox.length > 0) {
-		const start = (round - 1) * __roundSize;
-		const end = start + __roundSize;
-		return __vocabBox.slice(start, end);
-	}
-}
-
-function hasRound(round) {
-	return !((round - 1) * __roundSize >= __vocabBox.length);
-}
-
 // TODO: Update this to call the API.
 export function useVocabBox(categoryTitle, roundSize) {
+	const [__categoryTitle, __setCategoryTitle] = useState('');
+	const [__roundSize, __setRoundSize] = useState(0);
+	const [__vocabBox, __setVocabBox] = useState([]);
+
+	function getRound(round) {
+		if (__vocabBox.length === 0) {
+			console.error(
+				'pop was called on the __vocabBox, but there is no data to return.'
+			);
+		}
+		if (__vocabBox.length > 0) {
+			return __vocabBox.slice(
+				(round - 1) * __roundSize,
+				(round - 1) * __roundSize + 1
+			);
+		}
+	}
+
+	function hasRound(round) {
+		return !((round - 1) * __roundSize >= __vocabBox.length);
+	}
+
 	if (categoryTitle !== __categoryTitle || roundSize !== __roundSize) {
-		__roundSize = roundSize;
+		__setCategoryTitle(categoryTitle);
+		__setRoundSize(roundSize); //__roundSize = roundSize;
 		switch (categoryTitle) {
 			case 'Around-Town':
-				__vocabBox = shuffle([...townVocab]);
+				__setVocabBox(shuffle([...townVocab]));
 				break;
 			case 'At-the-Office':
-				__vocabBox = shuffle([...officeVocab]);
+				__setVocabBox(shuffle([...officeVocab]));
 				break;
 			case 'Colors':
-				__vocabBox = shuffle([...colorsVocab]);
+				__setVocabBox(shuffle([...colorsVocab]));
 				break;
 			case 'Literature':
-				__vocabBox = shuffle([...literatureVocab]);
+				__setVocabBox(shuffle([...literatureVocab]));
 				break;
 			case 'Top-50-Verbs':
-				__vocabBox = shuffle([...top50Verbs]);
+				__setVocabBox(shuffle([...top50Verbs]));
 				break;
 			default:
 				console.error(
