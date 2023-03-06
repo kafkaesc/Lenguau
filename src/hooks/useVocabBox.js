@@ -147,15 +147,16 @@ export function useVocabBox(categoryTitle, roundSize) {
 	const [__vocabBox, __setVocabBox] = useState([]);
 
 	function getRound(round) {
-		if (__vocabBox.length === 0) {
+		if (!__vocabBox || __vocabBox.length === 0 || !hasRound(round)) {
 			console.error(
-				'pop was called on the __vocabBox, but there is no data to return.'
+				`getRound(${round}) was called on the __vocabBox, but there is no data to return`
 			);
+			return [];
 		}
 		if (__vocabBox.length > 0) {
 			return __vocabBox.slice(
 				(round - 1) * __roundSize,
-				(round - 1) * __roundSize + 1
+				(round - 1) * __roundSize + 1 * __roundSize
 			);
 		}
 	}
@@ -166,7 +167,7 @@ export function useVocabBox(categoryTitle, roundSize) {
 
 	if (categoryTitle !== __categoryTitle || roundSize !== __roundSize) {
 		__setCategoryTitle(categoryTitle);
-		__setRoundSize(roundSize); //__roundSize = roundSize;
+		__setRoundSize(roundSize);
 		switch (categoryTitle) {
 			case 'Around-Town':
 				__setVocabBox(shuffle([...townVocab]));
