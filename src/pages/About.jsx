@@ -14,7 +14,12 @@ export default function About() {
 			<div className="text-center">
 				<LenguaToggle />
 			</div>
-			<P>About this project</P>
+			<P className="text-center">
+				<LenguaSpan
+					en="Built by Jared Hettinger"
+					es="Construido por Jared Hettinger"
+				/>
+			</P>
 		</AppBody>
 	);
 }
