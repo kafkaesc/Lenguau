@@ -13,8 +13,8 @@ export default function Instructions() {
 			<P>
 				The Duo Match exercise will present two columns of vocabulary: English
 				on the left and Spanish on the right. You can match pairs by clicking
-				the matching buttons in the left and right columns. Once all pairs on
-				screen have been matched, another round will be loaded. After yuo have
+				the matching buttons in the left and right columns. When all pairs on
+				screen have been matched, another round will load. After you have
 				matched all items in the vocabulary set the game will finish.
 			</P>
 			<H2>Grid Match</H2>
@@ -30,12 +30,27 @@ export default function Instructions() {
 		</div>
 	);
 	const es = (
-		<>
+		<div className="mt-2">
 			<H2>Combinar los Dúos</H2>
-			<P>La caja fue, como dije, oblanga</P>
+			<P>
+				El ejercicio Combinar los Dúos presenta dos columnas de vocabulario:
+				inglés a la izquierda y español a la derecha. Puedes combinar los pares
+				por haciendo clic en los botones que hacen juego en las columnas
+				derechas e izquierdas. Cuando todos los pares en la pantalla se
+				combinaron, otra ronda va a cargarse. Después de los combinas todos los
+				artículos en la colección de vocabulario el juego va a acabar.
+			</P>
 			<H2>Combinar en la Cuadrícula</H2>
-			<P>La caja fue, como dije, oblanga</P>
-		</>
+			<P>
+				El ejercicio Combinar en la Cuadrícula presenta una cuadrícula de
+				botones&mdash;4x3 por escritorio y 3x4 por móvil. La mitad de los
+				botones son españoles y la otra mitad son ingeleses que hacen juego.
+				Puedes hacer clic dos botones a tiempo para crear un par. Cuando todo de
+				los 12 botones se combinaron correctamente, una ronda nueva va a cagarse
+				con 12 botones nuevos. Cuando todo del vocabulario se combinaron para la
+				categoría seleccionada el juego va a acabar.
+			</P>
+		</div>
 	);
 
 	return (
