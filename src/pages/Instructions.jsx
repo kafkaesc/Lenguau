@@ -45,7 +45,7 @@ export default function Instructions() {
 				El ejercicio Combinar en la Cuadrícula presenta una cuadrícula de
 				botones&mdash;4x3 por escritorio y 3x4 por móvil. La mitad de los
 				botones son españoles y la otra mitad son ingeleses que hacen juego.
-				Puedes hacer clic dos botones a tiempo para crear un par. Cuando todo de
+				Puedes hacer clic dos botones a la vez para crear un par. Cuando todo de
 				los 12 botones se combinaron correctamente, una ronda nueva va a cagarse
 				con 12 botones nuevos. Cuando todo del vocabulario se combinaron para la
 				categoría seleccionada el juego va a acabar.
