@@ -5,6 +5,9 @@ import AppBody from 'layout/AppBody';
 import LenguaToggle from 'layout/LenguaToggle';
 import PageTitle from 'layout/PageTitle';
 
+import SocialLinks from 'components/SocialLinks';
+import TechLinks from 'components/TechLinks';
+
 export default function About() {
 	return (
 		<AppBody>
@@ -14,12 +17,20 @@ export default function About() {
 			<div className="text-center">
 				<LenguaToggle />
 			</div>
-			<P className="text-center">
-				<LenguaSpan
-					en="Built by Jared Hettinger"
-					es="Construido por Jared Hettinger"
-				/>
-			</P>
+			<div>
+				<P className="text-center">
+					<LenguaSpan
+						en="Built by Jared Hettinger"
+						es="Construido por Jared Hettinger"
+					/>
+				</P>
+				<div className="text-center">
+					<TechLinks />
+				</div>
+				<div className="text-center">
+					<SocialLinks />
+				</div>
+			</div>
 		</AppBody>
 	);
 }
