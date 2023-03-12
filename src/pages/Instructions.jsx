@@ -35,20 +35,21 @@ export default function Instructions() {
 			<P>
 				El ejercicio Combinar los Dúos presenta dos columnas de vocabulario:
 				inglés a la izquierda y español a la derecha. Puedes combinar los pares
-				por haciendo clic en los botones que hacen juego en las columnas
-				derechas e izquierdas. Cuando todos los pares en la pantalla se
-				combinaron, otra ronda va a cargarse. Después de los combinas todos los
-				artículos en la colección de vocabulario el juego va a acabar.
+				haciendo clic en los botones que hacen par en las columnas derechas e
+				izquierdas. Cuando todos los pares en la pantalla se haya combinado,
+				otra ronda se cargará. Después que haya combinado todos los artículos en
+				la colección de vocabulario el juego acabará.
 			</P>
 			<H2>Combinar en la Cuadrícula</H2>
 			<P>
 				El ejercicio Combinar en la Cuadrícula presenta una cuadrícula de
-				botones&mdash;4x3 por escritorio y 3x4 por móvil. La mitad de los
-				botones son españoles y la otra mitad son ingeleses que hacen juego.
-				Puedes hacer clic dos botones a la vez para crear un par. Cuando todo de
-				los 12 botones se combinaron correctamente, una ronda nueva va a cagarse
-				con 12 botones nuevos. Cuando todo del vocabulario se combinaron para la
-				categoría seleccionada el juego va a acabar.
+				botones&mdash;4x3 (computadora de escritorio) y 3x4 (móvil). La mitad de
+				los botones serán palabras en español, y la otra mitad serán las
+				palabras que hacen par en inglés. Puedes hacer clic en dos botones a la
+				vez para crear un par. Cuando los 12 botones se hayan combinado
+				correctamente, se cargará una ronda nueva con 12 botones nuevos. Cuando
+				todo del vocabulario se haya combinado para la categoría seleccionada el
+				juego acabará.
 			</P>
 		</div>
 	);
