@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLenguaApi } from 'context/LenguaApiContext';
 import { shuffle } from 'utilities/GameUtil';
 
 const colorsVocab = [
@@ -146,6 +147,8 @@ export function useVocabBox(categoryTitle, roundSize) {
 	const [__roundSize, __setRoundSize] = useState(0);
 	const [__vocabBox, __setVocabBox] = useState([]);
 
+	const apiBase = useLenguaApi();
+
 	function getRound(round) {
 		if (!__vocabBox || __vocabBox.length === 0 || !hasRound(round)) {
 			console.error(
@@ -168,6 +171,18 @@ export function useVocabBox(categoryTitle, roundSize) {
 	if (categoryTitle !== __categoryTitle || roundSize !== __roundSize) {
 		__setCategoryTitle(categoryTitle);
 		__setRoundSize(roundSize);
+
+		console.log('apiBase: ', apiBase);
+
+		fetch(`${apiBase}vocab/${categoryTitle}`)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log('_jhdb: data: ', data);
+			})
+			.catch((err) => {
+				console.log('_jhdb: err: ', err);
+			});
+
 		switch (categoryTitle) {
 			case 'Around-Town':
 				__setVocabBox(shuffle([...townVocab]));
