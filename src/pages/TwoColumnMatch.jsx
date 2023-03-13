@@ -114,7 +114,10 @@ export default function TwoColumnMatch() {
 		<AppBody>
 			<div className="w-full">
 				<PageTitle>
-					<LenguaSpan en="Duo Match" es="Combinar los Dúos" />
+					<LenguaSpan
+						en={vocabBox.title.en || 'Duo Match'}
+						es={vocabBox.title.es || 'Combinar los Dúos'}
+					/>
 				</PageTitle>
 				<P className="text-center">
 					Round: {round}; Correct: {correctCount}; Wrong: {wrongCount};

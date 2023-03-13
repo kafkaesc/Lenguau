@@ -104,7 +104,10 @@ export default function GridMatch() {
 		<AppBody>
 			<div className="w-full">
 				<PageTitle>
-					<LenguaSpan en="Grid Match" es="Combinar en la Cuadrícula" />
+					<LenguaSpan
+						en={vocabBox.title.en || 'Grid Match'}
+						es={vocabBox.title.es || 'Combinar en la Cuadrícula'}
+					/>
 				</PageTitle>
 				<P className="text-center">
 					Round: {round}; Correct: {correctCount}; Wrong: {wrongCount};
