@@ -72,7 +72,7 @@ export default function TwoColumnMatch() {
 	}, [lValue, rValue]);
 
 	useEffect(() => {
-		if (clearedCount === columns.l.length) {
+		if (vocabBox && clearedCount === columns.l.length) {
 			if (vocabBox.hasRound(round + 1)) {
 				let newColumns = [];
 				const roundVocab = vocabBox.getRound(round + 1);
@@ -97,26 +97,28 @@ export default function TwoColumnMatch() {
 	}, [clearedCount]);
 
 	useEffect(() => {
-		const vocabList = vocabBox.getRound(1).map((vo) => {
-			return { ...vo, cleared: false };
-		});
-		const newCols = {
-			l: shuffle(vocabList),
-			r: shuffle(vocabList),
-		};
-		setColumns(newCols);
-		setFinished(false);
-		setRound(1);
+		if (vocabBox) {
+			const vocabList = vocabBox.getRound(1).map((vo) => {
+				return { ...vo, cleared: false };
+			});
+			const newCols = {
+				l: shuffle(vocabList),
+				r: shuffle(vocabList),
+			};
+			setColumns(newCols);
+			setFinished(false);
+			setRound(1);
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [categoryTitle]);
+	}, [categoryTitle, vocabBox.title]);
 
 	return (
 		<AppBody>
 			<div className="w-full">
 				<PageTitle>
 					<LenguaSpan
-						en={vocabBox.title.en || 'Duo Match'}
-						es={vocabBox.title.es || 'Combinar los Dúos'}
+						en={vocabBox.title.en || ''}
+						es={vocabBox.title.es || ''}
 					/>
 				</PageTitle>
 				<P className="text-center">

@@ -42,18 +42,20 @@ export default function GridMatch() {
 	}
 
 	useEffect(() => {
-		let vocabList = vocabBox.getRound(1).map((vo) => {
-			return { ...vo, cleared: false };
-		});
-		vocabList = vocabList.flatMap((vo) => {
-			return [
-				{ cleared: false, languageCode: 'en', ...vo },
-				{ cleared: false, languageCode: 'es', ...vo },
-			];
-		});
-		setVocab(shuffle(vocabList));
+		if (vocabBox) {
+			let vocabList = vocabBox.getRound(1).map((vo) => {
+				return { ...vo, cleared: false };
+			});
+			vocabList = vocabList.flatMap((vo) => {
+				return [
+					{ cleared: false, languageCode: 'en', ...vo },
+					{ cleared: false, languageCode: 'es', ...vo },
+				];
+			});
+			setVocab(shuffle(vocabList));
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [categoryTitle]);
+	}, [categoryTitle, vocabBox.title]);
 
 	useEffect(() => {
 		function tagCleared() {
@@ -105,8 +107,8 @@ export default function GridMatch() {
 			<div className="w-full">
 				<PageTitle>
 					<LenguaSpan
-						en={vocabBox.title.en || 'Grid Match'}
-						es={vocabBox.title.es || 'Combinar en la Cuadrícula'}
+						en={vocabBox.title.en || ''}
+						es={vocabBox.title.es || ''}
 					/>
 				</PageTitle>
 				<P className="text-center">

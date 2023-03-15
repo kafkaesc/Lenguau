@@ -1,8 +1,6 @@
 export function shuffle(array) {
-	if (!array || !array.length) {
-		console.error(
-			'Non-array argument passed to shuffle in the TwoColumnMatch component'
-		);
+	if (!Array.isArray(array)) {
+		console.error('Non-array argument passed to shuffle in GameUtil');
 		return;
 	}
 
