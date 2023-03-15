@@ -8,16 +8,17 @@ export default function TcMatchSingleColumn({
 }) {
 	return (
 		<>
-			{vocab.map((vo, i) => (
-				<TcMatchButton
-					cleared={vo.cleared}
-					key={i}
-					languageCode={languageCode}
-					onClick={() => select(vo)}
-					selected={selectedVocab[languageCode] === vo[languageCode]}
-					vocabObj={vo}
-				/>
-			))}
+			{vocab &&
+				vocab.map((vo, i) => (
+					<TcMatchButton
+						cleared={vo.cleared}
+						key={i}
+						languageCode={languageCode}
+						onClick={() => select(vo)}
+						selected={selectedVocab[languageCode] === vo[languageCode]}
+						vocabObj={vo}
+					/>
+				))}
 		</>
 	);
 }
