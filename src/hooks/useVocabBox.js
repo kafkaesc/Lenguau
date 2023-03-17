@@ -3,8 +3,6 @@ import { useLenguaApi } from 'context/LenguaApiContext';
 import { shuffle } from 'utilities/GameUtil';
 import { sanitizeJsonName } from 'utilities/PathUtil';
 
-// TODO: Update this to use the API being called.
-// Break sets off into separate JSON files for "offline" mode.
 export function useVocabBox(categoryTitle, roundSize) {
 	const [__categoryTitle, __setCategoryTitle] = useState('');
 	const [__vocabTitle, __setVocabTitle] = useState({ en: '', es: '' });
