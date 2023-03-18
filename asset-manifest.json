@@ -1,19 +1,22 @@
 {
   "files": {
-    "main.css": "/Lenguau/static/css/main.ca0c8e81.css",
-    "main.js": "/Lenguau/static/js/main.bcb97c31.js",
+    "main.css": "/Lenguau/static/css/main.cf325b8d.css",
+    "main.js": "/Lenguau/static/js/main.832f2a2e.js",
     "static/js/787.4b736bc3.chunk.js": "/Lenguau/static/js/787.4b736bc3.chunk.js",
     "static/media/twitter.png": "/Lenguau/static/media/twitter.9685c410a6499b9ebc16.png",
+    "static/media/node.svg": "/Lenguau/static/media/node.37c107f1d75dae6bc702c205e0ddb5a3.svg",
+    "static/media/netlify.svg": "/Lenguau/static/media/netlify.50e8112ea09b8f0f2c515b716a6ec9eb.svg",
+    "static/media/express.svg": "/Lenguau/static/media/express.1420f27da094663cf0dcee5b4644e54f.svg",
     "static/media/react-router.svg": "/Lenguau/static/media/react-router.d3a3678be263c9df0964778f1151630c.svg",
     "static/media/tailwindcss.svg": "/Lenguau/static/media/tailwindcss.79614a5f61617ba49a0891494521226b.svg",
     "index.html": "/Lenguau/index.html",
     "static/media/react.svg": "/Lenguau/static/media/react.928f956d9c8ebcffb98a8e917154a81a.svg",
-    "main.ca0c8e81.css.map": "/Lenguau/static/css/main.ca0c8e81.css.map",
-    "main.bcb97c31.js.map": "/Lenguau/static/js/main.bcb97c31.js.map",
+    "main.cf325b8d.css.map": "/Lenguau/static/css/main.cf325b8d.css.map",
+    "main.832f2a2e.js.map": "/Lenguau/static/js/main.832f2a2e.js.map",
     "787.4b736bc3.chunk.js.map": "/Lenguau/static/js/787.4b736bc3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ca0c8e81.css",
-    "static/js/main.bcb97c31.js"
+    "static/css/main.cf325b8d.css",
+    "static/js/main.832f2a2e.js"
   ]
 }
