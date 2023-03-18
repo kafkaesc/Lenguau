@@ -5,8 +5,11 @@ import AppBody from 'layout/AppBody';
 import LenguaToggle from 'layout/LenguaToggle';
 import PageTitle from 'layout/PageTitle';
 
+import AboutTheBackend from 'components/AboutTheBackend';
+import AboutTheFrontend from 'components/AboutTheFrontend';
+import BackendTechLinks from 'components/BackendTechLinks';
+import FrontendTechLinks from 'components/FrontendTechLinks';
 import SocialLinks from 'components/SocialLinks';
-import TechLinks from 'components/TechLinks';
 
 export default function About() {
 	return (
@@ -25,8 +28,13 @@ export default function About() {
 					/>
 				</P>
 				<div className="text-center">
-					<TechLinks />
+					<FrontendTechLinks />
 				</div>
+				<AboutTheFrontend />
+				<div className="text-center">
+					<BackendTechLinks />
+				</div>
+				<AboutTheBackend />
 				<div className="text-center">
 					<SocialLinks />
 				</div>
