@@ -68,7 +68,7 @@ const es = (
 			>
 				codigo completo para este proyecto
 			</A>{' '}
-			se puede ver en GitHub. -f
+			se puede ver en GitHub.
 		</P>
 	</>
 );
