@@ -40,8 +40,8 @@ const en = (
 const es = (
 	<>
 		<P>
-			Los datos de vocabulario {/*are delivered*/} por la API de Lenguau, un
-			backend de{' '}
+			Los datos de vocabulario son entregados por la API de Lenguau, un backend
+			de{' '}
 			<A href="https://nodejs.org/" rel="noreferrer" target="_blank">
 				Node
 			</A>{' '}
