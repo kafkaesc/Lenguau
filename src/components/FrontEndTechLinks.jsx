@@ -28,7 +28,7 @@ const techLinks = [
 	},
 ];
 
-export default function FrontEndTechLinks() {
+export default function FrontendTechLinks() {
 	const lengua = useLengua();
 	return (
 		<ul className="list-none">

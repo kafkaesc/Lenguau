@@ -28,7 +28,7 @@ const techLinks = [
 	},
 ];
 
-export default function BackEndTechLinks() {
+export default function BackendTechLinks() {
 	const lengua = useLengua();
 	return (
 		<>
