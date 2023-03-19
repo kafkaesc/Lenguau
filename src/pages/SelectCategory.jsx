@@ -8,7 +8,7 @@ export default function SelectCategory() {
 	return (
 		<AppBody>
 			<PageTitle>
-				<LenguaSpan en="Select a Category" es="Selecionar una Categoría" />
+				<LenguaSpan en="Select a Category" es="Seleccionar una Categoría" />
 			</PageTitle>
 			<div className="text-center">
 				<LenguaToggle />
