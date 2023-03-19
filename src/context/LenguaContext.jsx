@@ -11,8 +11,8 @@ export function useLenguaUpdate() {
 	return useContext(LenguaUpdateContext);
 }
 
-export function LenguaProvider({ children }) {
-	const [lengua, setLengua] = useState('en');
+export function LenguaProvider({ languageCode, children }) {
+	const [lengua, setLengua] = useState(languageCode || 'en');
 
 	function toggleLengua() {
 		setLengua((val) => (val === 'en' ? 'es' : 'en'));
