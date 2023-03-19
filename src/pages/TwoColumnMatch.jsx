@@ -7,6 +7,7 @@ import LenguaSpan from 'elements/LenguaSpan';
 import P from 'elements/P';
 
 import AppBody from 'layout/AppBody';
+import Confetti from 'layout/Confetti';
 import PageTitle from 'layout/PageTitle';
 
 import TcMatchSingleColumn from 'components/TcMatchSingleColumn';
@@ -126,7 +127,10 @@ export default function TwoColumnMatch() {
 				</P>
 			</div>
 			{finished ? (
-				<P className="text-center">Finished!</P>
+				<>
+					<Confetti />
+					<P className="text-center text-7xl">Finished!</P>
+				</>
 			) : (
 				<>
 					<div className="inline-block w-1/2 p-1">

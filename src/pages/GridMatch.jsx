@@ -7,6 +7,7 @@ import LenguaSpan from 'elements/LenguaSpan';
 import P from 'elements/P';
 
 import AppBody from 'layout/AppBody';
+import Confetti from 'layout/Confetti';
 import PageTitle from 'layout/PageTitle';
 
 import GmGrid from 'components/GmGrid';
@@ -117,7 +118,10 @@ export default function GridMatch() {
 			</div>
 			<div className="w-full">
 				{finished ? (
-					<P className="text-center">Finished!</P>
+					<>
+						<Confetti />
+						<P className="text-center text-7xl">Finished!</P>
+					</>
 				) : (
 					<GmGrid
 						select={selectValue}
