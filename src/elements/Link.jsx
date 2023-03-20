@@ -1,7 +1,7 @@
 import { Link as RRLink } from 'react-router-dom';
 
-export default function Link(props) {
-	return props.className ? (
+export default function Link({ className, ...props }) {
+	return className ? (
 		<RRLink
 			{...props}
 			className={`text-blue hover:underline ${props.className}`}
