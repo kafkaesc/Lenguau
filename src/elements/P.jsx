@@ -1,6 +1,6 @@
-export default function P(props) {
-	return props.className ? (
-		<p {...props} className={`mb-2 ${props.className}`}></p>
+export default function P({ className, ...props }) {
+	return className ? (
+		<p {...props} className={`mb-2 ${className}`}></p>
 	) : (
 		<p {...props} className="mb-2"></p>
 	);
