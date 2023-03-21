@@ -1,5 +1,7 @@
 import { useLengua } from 'context/LenguaContext';
 
+import FloatUp from './FloatUp';
+
 import ExpressLogo from 'assets/images/tech/express.svg';
 import NetlifyLogo from 'assets/images/tech/netlify.svg';
 import NodeLogo from 'assets/images/tech/node.svg';
@@ -37,13 +39,15 @@ export default function BackendTechLinks() {
 					className="inline-block w-1/3 p-3 align-middle"
 					key={`tech-${te.name}`}
 				>
-					<a href={te.url} rel="noreferrer" target="_blank">
-						<img
-							alt={lengua === 'en' ? te.altTextEn : te.altTextEs}
-							className="w-full"
-							src={te.imgSrc}
-						/>
-					</a>
+					<FloatUp>
+						<a href={te.url} rel="noreferrer" target="_blank">
+							<img
+								alt={lengua === 'en' ? te.altTextEn : te.altTextEs}
+								className="w-full"
+								src={te.imgSrc}
+							/>
+						</a>
+					</FloatUp>
 				</li>
 			))}
 		</>

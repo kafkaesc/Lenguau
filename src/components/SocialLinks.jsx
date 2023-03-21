@@ -1,6 +1,8 @@
 import { useLengua } from 'context/LenguaContext';
 import { sanitizeImageName } from 'utilities/PathUtil';
 
+import FloatUp from './FloatUp';
+
 const socialLinks = [
 	{
 		altTextEn: 'GitHub Logo',
@@ -28,15 +30,17 @@ export default function SocialLinks() {
 		<ul className="mb-2 list-none">
 			{socialLinks.map((so) => (
 				<li className="inline-block" key={`social-${so.siteName}`}>
-					<a href={so.url} rel="noreferrer" target="_blank">
-						<img
-							alt={lengua === 'en' ? so.altTextEn : so.altTextEs}
-							className="h-8 mx-3"
-							src={require(`assets/images/social/${sanitizeImageName(
-								so.siteName
-							)}.png`)}
-						/>
-					</a>
+					<FloatUp>
+						<a href={so.url} rel="noreferrer" target="_blank">
+							<img
+								alt={lengua === 'en' ? so.altTextEn : so.altTextEs}
+								className="h-8 mx-3"
+								src={require(`assets/images/social/${sanitizeImageName(
+									so.siteName
+								)}.png`)}
+							/>
+						</a>
+					</FloatUp>
 				</li>
 			))}
 		</ul>

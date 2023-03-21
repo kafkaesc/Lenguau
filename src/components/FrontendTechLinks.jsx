@@ -1,5 +1,7 @@
 import { useLengua } from 'context/LenguaContext';
 
+import FloatUp from './FloatUp';
+
 import JestLogo from 'assets/images/tech/jest.svg';
 import ReactLogo from 'assets/images/tech/react.svg';
 import ReactRouterLogo from 'assets/images/tech/react-router.svg';
@@ -42,13 +44,15 @@ export default function FrontendTechLinks() {
 		<ul className="list-none">
 			{techLinks.map((te) => (
 				<li className="inline-block w-1/5 p-3" key={`tech-${te.name}`}>
-					<a href={te.url} rel="noreferrer" target="_blank">
-						<img
-							alt={lengua === 'en' ? te.altTextEn : te.altTextEs}
-							className={te.name === 'Jest' ? 'w-full max-h-16' : 'w-full'}
-							src={te.imgSrc}
-						/>
-					</a>
+					<FloatUp>
+						<a href={te.url} rel="noreferrer" target="_blank">
+							<img
+								alt={lengua === 'en' ? te.altTextEn : te.altTextEs}
+								className={te.name === 'Jest' ? 'w-full max-h-16' : 'w-full'}
+								src={te.imgSrc}
+							/>
+						</a>
+					</FloatUp>
 				</li>
 			))}
 		</ul>
