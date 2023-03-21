@@ -2,7 +2,8 @@ import A from 'elements/A';
 import LenguaSpan from 'elements/LenguaSpan';
 import P from 'elements/P';
 
-const en = (
+//TODO: Add Jest to en and es.
+const En = () => (
 	<P>
 		This is a{' '}
 		<A href="https://reactjs.org" rel="noreferrer" target="_blank">
@@ -20,7 +21,7 @@ const en = (
 	</P>
 );
 
-const es = (
+const Es = () => (
 	<>
 		<P>
 			Este es un sitio de{' '}
@@ -41,5 +42,5 @@ const es = (
 );
 
 export default function AboutTheFrontend() {
-	return <LenguaSpan en={en} es={es} />;
+	return <LenguaSpan en={<En />} es={<Es />} />;
 }

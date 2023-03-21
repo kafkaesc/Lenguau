@@ -2,7 +2,7 @@ import A from 'elements/A';
 import LenguaSpan from 'elements/LenguaSpan';
 import P from 'elements/P';
 
-const en = (
+const En = () => (
 	<>
 		<P>
 			The vocabulary payload is delivered via the Lenguau API, a{' '}
@@ -37,7 +37,7 @@ const en = (
 	</>
 );
 
-const es = (
+const Es = () => (
 	<>
 		<P>
 			Los datos de vocabulario son entregados por la API de Lenguau, un backend
@@ -74,5 +74,5 @@ const es = (
 );
 
 export default function AboutTheBackend() {
-	return <LenguaSpan en={en} es={es} />;
+	return <LenguaSpan en={<En />} es={<Es />} />;
 }

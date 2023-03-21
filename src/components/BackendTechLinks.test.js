@@ -12,8 +12,11 @@ it('Has the backend links in English', () => {
 	const expressLink = screen.getByRole('link', { name: /express logo/i });
 	const netlifyLink = screen.getByRole('link', { name: /netlify logo/i });
 	expect(nodeLink).toBeInTheDocument();
+	expect(nodeLink).toHaveAttribute('target', '_blank');
 	expect(expressLink).toBeInTheDocument();
+	expect(expressLink).toHaveAttribute('target', '_blank');
 	expect(netlifyLink).toBeInTheDocument();
+	expect(netlifyLink).toHaveAttribute('target', '_blank');
 });
 
 it('Has the backend links in English with no Spanish', () => {
@@ -44,8 +47,11 @@ it('Has the backend links in Spanish', () => {
 	const expressLink = screen.getByRole('link', { name: /el logo de express/i });
 	const netlifyLink = screen.getByRole('link', { name: /el logo de netlify/i });
 	expect(nodeLink).toBeInTheDocument();
+	expect(nodeLink).toHaveAttribute('target', '_blank');
 	expect(expressLink).toBeInTheDocument();
+	expect(expressLink).toHaveAttribute('target', '_blank');
 	expect(netlifyLink).toBeInTheDocument();
+	expect(netlifyLink).toHaveAttribute('target', '_blank');
 });
 
 it('Has the backend links in Spanish with no English', () => {
