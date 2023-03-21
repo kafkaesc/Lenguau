@@ -23,17 +23,6 @@ const En = () => (
 			</A>{' '}
 			can be viewed on GitHub.
 		</P>
-		<P>
-			The{' '}
-			<A
-				href="https://github.com/kafkaesc/Lenguau"
-				rel="noreferrer"
-				target="_blank"
-			>
-				full code for this project
-			</A>{' '}
-			can be viewed on GitHub.
-		</P>
 	</>
 );
 
@@ -56,17 +45,6 @@ const Es = () => (
 				target="_blank"
 			>
 				codigo completo para la API de Lenguau
-			</A>{' '}
-			se puede ver en GitHub.
-		</P>
-		<P>
-			El{' '}
-			<A
-				href="https://github.com/kafkaesc/Lenguau"
-				rel="noreferrer"
-				target="_blank"
-			>
-				codigo completo para este proyecto
 			</A>{' '}
 			se puede ver en GitHub.
 		</P>

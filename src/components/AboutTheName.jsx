@@ -3,7 +3,7 @@ import P from 'elements/P';
 
 const En = () => (
 	<P>
-		Lenguau means language in Spanish. Guau is wow&mdash;it is literally wow
+		Lengua means language in Spanish. Guau is wow&mdash;it is literally wow
 		written phonetically. Put them together and you get leng-wow!
 	</P>
 );
