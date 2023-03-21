@@ -1,5 +1,6 @@
 import { useLengua } from 'context/LenguaContext';
 
+import JestLogo from 'assets/images/tech/jest.svg';
 import ReactLogo from 'assets/images/tech/react.svg';
 import ReactRouterLogo from 'assets/images/tech/react-router.svg';
 import TailwindLogo from 'assets/images/tech/tailwindcss.svg';
@@ -26,6 +27,13 @@ const techLinks = [
 		name: 'Tailwind',
 		url: 'https://tailwindcss.com/',
 	},
+	{
+		altTextEn: 'Jest Logo',
+		altTextEs: 'El logo de Jest',
+		imgSrc: JestLogo,
+		name: 'Jest',
+		url: 'https://jestjs.io',
+	},
 ];
 
 export default function FrontendTechLinks() {
@@ -37,7 +45,7 @@ export default function FrontendTechLinks() {
 					<a href={te.url} rel="noreferrer" target="_blank">
 						<img
 							alt={lengua === 'en' ? te.altTextEn : te.altTextEs}
-							className="w-full"
+							className={te.name === 'Jest' ? 'w-full max-h-16' : 'w-full'}
 							src={te.imgSrc}
 						/>
 					</a>

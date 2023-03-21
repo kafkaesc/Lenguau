@@ -2,7 +2,8 @@ import A from 'elements/A';
 import LenguaSpan from 'elements/LenguaSpan';
 import P from 'elements/P';
 
-const en = (
+//TODO: Add Jest to en and es.
+const En = () => (
 	<P>
 		This is a{' '}
 		<A href="https://reactjs.org" rel="noreferrer" target="_blank">
@@ -16,11 +17,19 @@ const en = (
 		<A href="https://tailwindcss.com" rel="noreferrer" target="_blank">
 			Tailwind
 		</A>{' '}
-		for site styles.
+		for site styles. The code is tested with the{' '}
+		<A href="https://testing-library.com/" rel="noreferrer" target="_blank">
+			React Testing Library
+		</A>{' '}
+		and{' '}
+		<A href="https://jestjs.io/" rel="noreferrer" target="_blank">
+			Jest
+		</A>
+		.
 	</P>
 );
 
-const es = (
+const Es = () => (
 	<>
 		<P>
 			Este es un sitio de{' '}
@@ -35,11 +44,19 @@ const es = (
 			<A href="https://tailwindcss.com" rel="noreferrer" target="_blank">
 				Tailwind
 			</A>{' '}
-			para los estilos del sitio.
+			para los estilos del sitio. El codigo se prueba con{' '}
+			<A href="https://testing-library.com/" rel="noreferrer" target="_blank">
+				React Testing Library
+			</A>{' '}
+			y{' '}
+			<A href="https://jestjs.io/" rel="noreferrer" target="_blank">
+				Jest
+			</A>
+			.
 		</P>
 	</>
 );
 
 export default function AboutTheFrontend() {
-	return <LenguaSpan en={en} es={es} />;
+	return <LenguaSpan en={<En />} es={<Es />} />;
 }
