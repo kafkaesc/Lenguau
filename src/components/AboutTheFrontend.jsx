@@ -17,7 +17,15 @@ const En = () => (
 		<A href="https://tailwindcss.com" rel="noreferrer" target="_blank">
 			Tailwind
 		</A>{' '}
-		for site styles.
+		for site styles. The code is tested with the{' '}
+		<A href="https://testing-library.com/" rel="noreferrer" target="_blank">
+			React Testing Library
+		</A>{' '}
+		and{' '}
+		<A href="https://jestjs.io/" rel="noreferrer" target="_blank">
+			Jest
+		</A>
+		.
 	</P>
 );
 
@@ -36,7 +44,15 @@ const Es = () => (
 			<A href="https://tailwindcss.com" rel="noreferrer" target="_blank">
 				Tailwind
 			</A>{' '}
-			para los estilos del sitio.
+			para los estilos del sitio. El codigo se prueba con{' '}
+			<A href="https://testing-library.com/" rel="noreferrer" target="_blank">
+				React Testing Library
+			</A>{' '}
+			y{' '}
+			<A href="https://jestjs.io/" rel="noreferrer" target="_blank">
+				Jest
+			</A>
+			.
 		</P>
 	</>
 );
