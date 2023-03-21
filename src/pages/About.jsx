@@ -1,3 +1,4 @@
+import H2 from 'elements/H2';
 import LenguaSpan from 'elements/LenguaSpan';
 import P from 'elements/P';
 
@@ -7,6 +8,7 @@ import PageTitle from 'layout/PageTitle';
 
 import AboutTheBackend from 'components/AboutTheBackend';
 import AboutTheFrontend from 'components/AboutTheFrontend';
+import AboutTheName from 'components/AboutTheName';
 import BackendTechLinks from 'components/BackendTechLinks';
 import FrontendTechLinks from 'components/FrontendTechLinks';
 import SocialLinks from 'components/SocialLinks';
@@ -27,10 +29,20 @@ export default function About() {
 						es="Construido por Jared Hettinger"
 					/>
 				</P>
+				<H2>
+					<LenguaSpan en="The Name" es="El Nombre" />
+				</H2>
+				<AboutTheName />
+				<H2 className="mb-0">
+					<LenguaSpan en="The Front End" es="El Frontend" />
+				</H2>
 				<div className="text-center">
 					<FrontendTechLinks />
 				</div>
 				<AboutTheFrontend />
+				<H2 className="mb-0">
+					<LenguaSpan en="The Back End" es="El Backend" />
+				</H2>
 				<div className="text-center">
 					<BackendTechLinks />
 				</div>
