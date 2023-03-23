@@ -15,6 +15,11 @@ The full code for this project can be viewed at https://github.com/kafkaesc/Leng
 1. Run the Tailwind watcher `npx tailwindcss -i ./src/input.css -o ./src/output.css --watch`
 1. Run the app `npm start`
 
+# To Test
+
+1. Navigate to the project folder
+1. Run `npm test`
+
 # Lenguau
 
 Construido por Jared Hettinger
@@ -31,3 +36,8 @@ El código completo para el proyecto está en https://github.com/kafkaesc/Lengua
 1. Ejecute `npm install`
 1. Ejecute el mirador de Tailwind `npx tailwindcss -i ./src/input.css -o ./src/output.css --watch`
 1. Ejecute el app `npm start`
+
+# Para Probar
+
+1. Vaya al fólder del proyecto
+1. Ejecute `npm test`

@@ -2,7 +2,6 @@ import A from 'elements/A';
 import LenguaSpan from 'elements/LenguaSpan';
 import P from 'elements/P';
 
-//TODO: Add Jest to en and es.
 const En = () => (
 	<>
 		<P>
