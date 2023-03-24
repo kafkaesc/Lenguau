@@ -28,7 +28,7 @@ export function useVocabBox(categoryTitle, roundSize) {
 	}
 
 	function loadLocalVocab(categoryTitle) {
-		const localVocab = require(`assets/offline-sets/${sanitizeJsonName(
+		const localVocab = require(`assets/offline-data/${sanitizeJsonName(
 			categoryTitle
 		)}.json`);
 		__setVocabBox(shuffle([...localVocab.vocabList]));
