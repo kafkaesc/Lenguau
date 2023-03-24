@@ -8,6 +8,8 @@ A working version of this site can be viewed at https://kafkaesc.github.io/Lengu
 
 The full code for this project can be viewed at https://github.com/kafkaesc/Lenguau/
 
+The full code for the Lenguau API can be viewed at https://github.com/kafkaesc/Lenguau-API
+
 ## To Run
 
 1. Navigate to the project folder
@@ -29,6 +31,8 @@ Este proyecto es un trabajo en progreso. Va a ser un webapp para practicar vocab
 Una versión operativa del sitio está en https://kafkaesc.github.io/Lenguau/
 
 El código completo para el proyecto está en https://github.com/kafkaesc/Lenguau/
+
+El código completo para la Lenguau API está en https://github.com/kafkaesc/Lenguau-API
 
 ## Para Ejecutarlo
 
