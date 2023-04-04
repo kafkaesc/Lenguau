@@ -10,13 +10,6 @@
 		{ "en": "email", "es": "el correo electrónico" },
 		{ "en": "job", "es": "el trabajo" },
 		{ "en": "keyboard", "es": "el teclado" },
-		{ "en": "mail", "es": "el correo" },
-		{ "en": "office", "es": "la oficina" },
-		{ "en": "paper", "es": "el papel" },
-		{ "en": "pencil", "es": "un lápiz" },
-		{ "en": "pen", "es": "el bolígrafo" },
-		{ "en": "profession", "es": "la profesión" },
-		{ "en": "staple", "es": "la grapa" },
-		{ "en": "stapler", "es": "la grapadora" }
+		{ "en": "profession", "es": "la profesión" }
 	]
 }
