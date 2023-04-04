@@ -46,31 +46,31 @@ export function useVocabBox(categoryTitle, roundSize) {
 					.then((data) => {
 						__setVocabBox(shuffle([...data.vocabList]));
 						__setVocabTitle(data.title);
-					})
-					.catch((err) => {
-						console.error('Error fetching vocabulary for useVocabBox: ', err);
-						console.log('Using offline vocab set.');
-
-						// TODO: Break this into a hook
-						switch (categoryTitle) {
-							case 'Around-Town':
-							case 'At-the-Office':
-							case 'Colors':
-							case 'Literature':
-							case 'Top-50-Verbs':
-								loadLocalVocab(categoryTitle);
-								break;
-							default:
-								console.error(
-									'useVocabBox offline error: No vocabulary to match the provided category title: ' +
-										categoryTitle
-								);
-								break;
-						}
 					});
 			}
 
-			myFetch();
+			myFetch().catch((err) => {
+				console.error('Error fetching vocabulary for useVocabBox: ', err);
+				console.log('Using offline vocab set.');
+
+				// TODO: Break this into OfflineUtil
+				switch (categoryTitle) {
+					case 'Around-Town':
+					case 'At-the-Office':
+					case 'Colors':
+					case 'Food':
+					case 'Literature':
+					case 'Top-50-Verbs':
+						loadLocalVocab(categoryTitle);
+						break;
+					default:
+						console.error(
+							'useVocabBox offline error: No vocabulary to match the provided category title: ' +
+								categoryTitle
+						);
+						break;
+				}
+			});
 		}
 	}, [__categoryTitle, __roundSize, apiBase, categoryTitle, roundSize]);
 

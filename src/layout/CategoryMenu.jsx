@@ -8,27 +8,26 @@ import MenuButton from 'elements/MenuButton';
 export default function CategoryMenu() {
 	const [categories, setCategories] = useState([]);
 
-	/*const {
-		categoryList: categories,
-	} = require(`assets/offline-data/set-categories.json`);*/
 	const gamePath = useLocation().pathname.split('/')[1];
 	const apiBase = useLenguaApi();
 
 	useEffect(() => {
 		async function myFetch() {
-			fetch(`${apiBase}vocab/`)
+			await fetch(`${apiBase}vocab/`)
 				.then((res) => res.json())
 				.then((data) => {
 					setCategories(data.categoryList);
-				})
-				.catch((err) => {
-					console.error(
-						'Error fetching the category data for the category menu'
-					);
 				});
 		}
 
-		myFetch();
+		myFetch().catch((err) => {
+			console.error('Error fetching the category data for the category menu');
+			console.log('Using offline vocab categories.');
+
+			// TODO: Break this into OfflineUtil
+			const localCategories = require(`assets/offline-data/set-categories.json`);
+			setCategories(localCategories.categoryList);
+		});
 	}, [apiBase]);
 
 	return (
