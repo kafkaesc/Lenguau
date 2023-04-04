@@ -1,0 +1,18 @@
+{
+	"title": { "en": "Food", "es": "La Comida" },
+	"vocabList": [
+		{ "en": "avocado", "es": "el aguacate" },
+		{ "en": "bean", "es": "el frijol" },
+		{ "en": "bread", "es": "el pan" },
+		{ "en": "cheese", "es": "el queso" },
+		{ "en": "coffee", "es": "el café" },
+		{ "en": "egg", "es": "el huevo" },
+		{ "en": "food", "es": "la comida" },
+		{ "en": "fruit", "es": "la fruta" },
+		{ "en": "meat", "es": "la carne" },
+		{ "en": "potato", "es": "la papa" },
+		{ "en": "soup", "es": "la sopa" },
+		{ "en": "vegetable", "es": "el vegetal, la verdura" },
+		{ "en": "water", "es": "el agua" }
+	]
+}
