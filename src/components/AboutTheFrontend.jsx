@@ -52,7 +52,7 @@ const Es = () => (
 			<A href="https://reactrouter.com/" rel="noreferrer" target="_blank">
 				React Router
 			</A>{' '}
-			para enrutamiento. Lo usa{' '}
+			para enrutamiento. Utiliza{' '}
 			<A href="https://tailwindcss.com/" rel="noreferrer" target="_blank">
 				Tailwind
 			</A>{' '}

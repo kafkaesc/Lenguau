@@ -34,7 +34,7 @@ const Es = () => (
 			<A href="https://nodejs.org/" rel="noreferrer" target="_blank">
 				Node
 			</A>{' '}
-			que usa el marco{' '}
+			que usa el framework{' '}
 			<A href="https://expressjs.com/" rel="noreferrer" target="_blank">
 				Express
 			</A>
