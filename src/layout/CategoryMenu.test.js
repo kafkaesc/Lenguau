@@ -10,26 +10,28 @@ it('Has the English category names', () => {
 		</LenguaProvider>,
 		{ wrapper: MemoryRouter }
 	);
-	const aroundTown = screen
-		.getAllByRole('listitem')
-		.find((li) => li.textContent.toLowerCase() === 'around town');
-	expect(aroundTown).toBeInTheDocument();
-	const atTheOffice = screen
-		.getAllByRole('listitem')
-		.find((li) => li.textContent.toLowerCase() === 'at the office');
-	expect(atTheOffice).toBeInTheDocument();
-	const colors = screen
-		.getAllByRole('listitem')
-		.find((li) => li.textContent.toLowerCase() === 'colors');
-	expect(colors).toBeInTheDocument();
-	const literature = screen
-		.getAllByRole('listitem')
-		.find((li) => li.textContent.toLowerCase() === 'literature');
-	expect(literature).toBeInTheDocument();
-	const top50Verbs = screen
-		.getAllByRole('listitem')
-		.find((li) => li.textContent.toLowerCase() === 'top 50 verbs');
-	expect(top50Verbs).toBeInTheDocument();
+	setTimeout(() => {
+		const aroundTown = screen
+			.getAllByRole('listitem')
+			.find((li) => li.textContent.toLowerCase() === 'around town');
+		expect(aroundTown).toBeInTheDocument();
+		const atTheOffice = screen
+			.getAllByRole('listitem')
+			.find((li) => li.textContent.toLowerCase() === 'at the office');
+		expect(atTheOffice).toBeInTheDocument();
+		const colors = screen
+			.getAllByRole('listitem')
+			.find((li) => li.textContent.toLowerCase() === 'colors');
+		expect(colors).toBeInTheDocument();
+		const literature = screen
+			.getAllByRole('listitem')
+			.find((li) => li.textContent.toLowerCase() === 'literature');
+		expect(literature).toBeInTheDocument();
+		const top50Verbs = screen
+			.getAllByRole('listitem')
+			.find((li) => li.textContent.toLowerCase() === 'top 50 verbs');
+		expect(top50Verbs).toBeInTheDocument();
+	}, 3000);
 });
 
 it('Has the Spanish category names', () => {
@@ -39,24 +41,26 @@ it('Has the Spanish category names', () => {
 		</LenguaProvider>,
 		{ wrapper: MemoryRouter }
 	);
-	const aroundTown = screen
-		.getAllByRole('listitem')
-		.find((li) => li.textContent.toLowerCase() === 'en el pueblo');
-	expect(aroundTown).toBeInTheDocument();
-	const atTheOffice = screen
-		.getAllByRole('listitem')
-		.find((li) => li.textContent.toLowerCase() === 'en la oficina');
-	expect(atTheOffice).toBeInTheDocument();
-	const colors = screen
-		.getAllByRole('listitem')
-		.find((li) => li.textContent.toLowerCase() === 'de colores');
-	expect(colors).toBeInTheDocument();
-	const literature = screen
-		.getAllByRole('listitem')
-		.find((li) => li.textContent.toLowerCase() === 'la literatura');
-	expect(literature).toBeInTheDocument();
-	const top50Verbs = screen
-		.getAllByRole('listitem')
-		.find((li) => li.textContent.toLowerCase() === '50 verbos principales');
-	expect(top50Verbs).toBeInTheDocument();
+	setTimeout(() => {
+		const aroundTown = screen
+			.getAllByRole('listitem')
+			.find((li) => li.textContent.toLowerCase() === 'en el pueblo');
+		expect(aroundTown).toBeInTheDocument();
+		const atTheOffice = screen
+			.getAllByRole('listitem')
+			.find((li) => li.textContent.toLowerCase() === 'en la oficina');
+		expect(atTheOffice).toBeInTheDocument();
+		const colors = screen
+			.getAllByRole('listitem')
+			.find((li) => li.textContent.toLowerCase() === 'de colores');
+		expect(colors).toBeInTheDocument();
+		const literature = screen
+			.getAllByRole('listitem')
+			.find((li) => li.textContent.toLowerCase() === 'la literatura');
+		expect(literature).toBeInTheDocument();
+		const top50Verbs = screen
+			.getAllByRole('listitem')
+			.find((li) => li.textContent.toLowerCase() === '50 verbos principales');
+		expect(top50Verbs).toBeInTheDocument();
+	}, 3000);
 });
