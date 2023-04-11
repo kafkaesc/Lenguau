@@ -12,6 +12,7 @@ import Home from 'pages/Home';
 import Instructions from 'pages/Instructions';
 import SelectCategory from 'pages/SelectCategory';
 import TwoColumnMatch from 'pages/TwoColumnMatch';
+import TypeOut from 'pages/TypeOut';
 
 const router = createHashRouter([
 	{
@@ -27,6 +28,8 @@ const router = createHashRouter([
 			{ path: '/GridMatch/:categoryTitle', element: <GridMatch /> },
 			{ path: '/Home', element: <Home /> },
 			{ path: '/Instructions', element: <Instructions /> },
+			{ path: '/TypeOut', element: <SelectCategory /> },
+			{ path: '/TypeOut/:categoryTitle', element: <TypeOut /> },
 		],
 	},
 ]);
