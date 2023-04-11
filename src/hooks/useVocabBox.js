@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLenguaApi } from 'context/LenguaApiContext';
 import { shuffle } from 'utilities/GameUtil';
-import { sanitizeJsonName } from 'utilities/PathUtil';
+import { getOfflineVocab } from 'utilities/OfflineUtil';
 
 export function useVocabBox(categoryTitle, roundSize) {
 	const [__categoryTitle, __setCategoryTitle] = useState('');
@@ -28,9 +28,7 @@ export function useVocabBox(categoryTitle, roundSize) {
 	}
 
 	function loadLocalVocab(categoryTitle) {
-		const localVocab = require(`assets/offline-data/${sanitizeJsonName(
-			categoryTitle
-		)}.json`);
+		const localVocab = getOfflineVocab(categoryTitle);
 		__setVocabBox(shuffle([...localVocab.vocabList]));
 		__setVocabTitle({ en: localVocab.title.en, es: localVocab.title.es });
 	}
@@ -46,31 +44,15 @@ export function useVocabBox(categoryTitle, roundSize) {
 					.then((data) => {
 						__setVocabBox(shuffle([...data.vocabList]));
 						__setVocabTitle(data.title);
-					})
-					.catch((err) => {
-						console.error('Error fetching vocabulary for useVocabBox: ', err);
-						console.log('Using offline vocab set.');
-
-						// TODO: Break this into a hook
-						switch (categoryTitle) {
-							case 'Around-Town':
-							case 'At-the-Office':
-							case 'Colors':
-							case 'Literature':
-							case 'Top-50-Verbs':
-								loadLocalVocab(categoryTitle);
-								break;
-							default:
-								console.error(
-									'useVocabBox offline error: No vocabulary to match the provided category title: ' +
-										categoryTitle
-								);
-								break;
-						}
 					});
 			}
 
-			myFetch();
+			myFetch().catch((err) => {
+				console.error('Error fetching vocabulary for useVocabBox: ', err);
+				console.log('Using offline vocab set.');
+
+				loadLocalVocab(categoryTitle);
+			});
 		}
 	}, [__categoryTitle, __roundSize, apiBase, categoryTitle, roundSize]);
 

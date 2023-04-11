@@ -35,7 +35,7 @@ export default function Instructions() {
 			<P>
 				El ejercicio Combinar los Dúos presenta dos columnas de vocabulario:
 				inglés a la izquierda y español a la derecha. Puedes combinar los pares
-				haciendo clic en los botones que hacen par en las columnas derechas e
+				haciendo clic en los botones localizados en las columnas derechas e
 				izquierdas. Cuando todos los pares en la pantalla se haya combinado,
 				otra ronda se cargará. Después que haya combinado todos los artículos en
 				la colección de vocabulario el juego acabará.
