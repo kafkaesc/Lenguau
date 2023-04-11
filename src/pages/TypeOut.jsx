@@ -79,7 +79,7 @@ export default function TypeOut() {
 	return (
 		<AppBody>
 			<PageTitle>
-				<LenguaSpan en="Type Out" es="La Teclea" />
+				<LenguaSpan en="Type Out" es="Tecleala" />
 			</PageTitle>
 			<P className="text-center">
 				Correct: {correctCount}; Wrong: {wrongCount};
@@ -98,7 +98,7 @@ export default function TypeOut() {
 					Submit
 				</Button>
 			</form>
-			{/*<code>Acceptable guesses: en: ; es: ;</code>*/}
+			{/*<code>Submitted answer: ; Acceptable guesses: en: ; es: ;</code>*/}
 		</AppBody>
 	);
 }

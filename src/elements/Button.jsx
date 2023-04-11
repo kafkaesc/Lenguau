@@ -4,12 +4,12 @@ export default function Button({ className, ...props }) {
 	return className ? (
 		<button
 			{...props}
-			className={`px-4 py-2 mx-4 my-2 border-2 border-black ${className}`}
+			className={`px-4 py-2 mx-4 my-2 border-2 border-black hover:bg-black hover:text-white ${className}`}
 		></button>
 	) : (
 		<button
 			{...props}
-			className="px-4 py-2 mx-4 my-2 border-2 border-black"
+			className="px-4 py-2 mx-4 my-2 border-2 border-black hover:bg-black hover:text-white"
 		></button>
 	);
 }
