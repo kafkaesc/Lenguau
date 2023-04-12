@@ -92,6 +92,7 @@ export default function TypeOut() {
 					name="enteredWord"
 					onChange={(ev) => setEnteredWord(ev.target.value)}
 					placeholder="Enter the translation"
+					type="text"
 					value={enteredWord}
 				/>
 				<Button className="block mx-auto" type="submit">

@@ -18,7 +18,7 @@ it('Loads a disabled button', () => {
 
 it('Loads as type="button" with onClick', () => {
 	const namedFn = () => {
-		return 'ABXYw';
+		return 'ABXY';
 	};
 	render(
 		<Button onClick={namedFn} type="button">
