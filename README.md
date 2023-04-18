@@ -4,9 +4,9 @@ Built by Jared Hettinger
 
 This project is a work in progress. It will eventually develop into a webapp for practicing English/Spanish vocabulary.
 
-A working version of this site can be viewed at https://kafkaesc.github.io/Lenguau/
+A working version of this site can be viewed at https://kafkaesc.github.io/Lenguau
 
-The full code for this project can be viewed at https://github.com/kafkaesc/Lenguau/
+The full code for this project can be viewed at https://github.com/kafkaesc/Lenguau
 
 The full code for the Lenguau API can be viewed at https://github.com/kafkaesc/Lenguau-API
 
@@ -28,9 +28,9 @@ Construido por Jared Hettinger
 
 Este proyecto es un trabajo en progreso. Va a ser un webapp para practicar vocabulario de español/inglés.
 
-Una versión operativa del sitio está en https://kafkaesc.github.io/Lenguau/
+Una versión operativa del sitio está en https://kafkaesc.github.io/Lenguau
 
-El código completo para el proyecto está en https://github.com/kafkaesc/Lenguau/
+El código completo para el proyecto está en https://github.com/kafkaesc/Lenguau
 
 El código completo para la Lenguau API está en https://github.com/kafkaesc/Lenguau-API
 
