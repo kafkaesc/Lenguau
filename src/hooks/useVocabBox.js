@@ -5,9 +5,9 @@ import { getOfflineVocab } from 'utilities/OfflineUtil';
 
 export function useVocabBox(categoryTitle, roundSize) {
 	const [__categoryTitle, __setCategoryTitle] = useState('');
-	const [__vocabTitle, __setVocabTitle] = useState({ en: '', es: '' });
 	const [__roundSize, __setRoundSize] = useState(0);
 	const [__vocabBox, __setVocabBox] = useState([]);
+	const [__vocabTitle, __setVocabTitle] = useState({ en: '', es: '' });
 
 	const apiBase = useLenguaApi();
 
