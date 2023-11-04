@@ -20,7 +20,7 @@
 .env.test.local
 .env.production
 .env.production.local
-/src/output.css
+#/src/output.css
 /.vscode
 
 npm-debug.log*
