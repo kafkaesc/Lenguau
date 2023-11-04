@@ -106,6 +106,7 @@ export default function TwoColumnMatch() {
 				l: shuffle(vocabList),
 				r: shuffle(vocabList),
 			};
+			console.log('newCols: ', newCols);
 			setColumns(newCols);
 			setFinished(false);
 			setRound(1);
