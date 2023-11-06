@@ -22,6 +22,12 @@ const socialLinks = [
 		siteName: 'Instagram',
 		url: 'https://www.instagram.com/kafkaesc',
 	},
+	{
+		altTextEn: '',
+		altTextEs: '',
+		siteName: 'LinkedIn',
+		url: 'https://www.linkedin.com/in/jahettinger'
+	}
 ];
 
 export default function SocialLinks() {
