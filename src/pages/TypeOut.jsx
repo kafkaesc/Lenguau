@@ -15,13 +15,13 @@ const ROUND_SIZE = 1;
 
 export default function TypeOut() {
 	// TODO: Make default value null when loading from vocabBox
-	const [activeWords, setActiveWords] = useState({
+	const [activeWords /*, setActiveWords*/] = useState({
 		en: 'water',
 		es: 'el agua',
 	});
 	const [correctCount, setCorrectCount] = useState(0);
 	const [enteredWord, setEnteredWord] = useState('');
-	const [round, setRound] = useState(1);
+	//const [round, setRound] = useState(1);
 	const [wrongCount, setWrongCount] = useState(0);
 
 	const { categoryTitle } = useParams();

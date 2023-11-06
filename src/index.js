@@ -11,6 +11,7 @@ import GridMatch from 'pages/GridMatch';
 import Home from 'pages/Home';
 import Instructions from 'pages/Instructions';
 import SelectCategory from 'pages/SelectCategory';
+import TcMatchTutorial from 'components/TcMatchTutorial';
 import TwoColumnMatch from 'pages/TwoColumnMatch';
 import TypeOut from 'pages/TypeOut';
 
@@ -23,6 +24,9 @@ const router = createHashRouter([
 			{ path: '/', element: <Home /> },
 			{ path: '/About', element: <About /> },
 			{ path: '/DuoMatch/Select-Category', element: <SelectCategory /> },
+			// TODO: Remove this path when tutorial is ready and via localStorage
+			// have it load the first time visiting the Duo Match game
+			{ path: '/DuoMatch/Tutorial', element: <TcMatchTutorial /> },
 			{ path: '/DuoMatch/:categoryTitle', element: <TwoColumnMatch /> },
 			{ path: '/GridMatch/Select-Category', element: <SelectCategory /> },
 			{ path: '/GridMatch/:categoryTitle', element: <GridMatch /> },

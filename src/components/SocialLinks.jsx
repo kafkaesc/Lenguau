@@ -34,7 +34,7 @@ export default function SocialLinks() {
 						<a href={so.url} rel="noreferrer" target="_blank">
 							<img
 								alt={lengua === 'en' ? so.altTextEn : so.altTextEs}
-								className="h-8 mx-3"
+								className="h-6 mx-3"
 								src={require(`assets/images/social/${sanitizeImageName(
 									so.siteName
 								)}.png`)}

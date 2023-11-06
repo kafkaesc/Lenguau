@@ -29,6 +29,9 @@ export default function About() {
 						es="Construido por Jared Hettinger"
 					/>
 				</P>
+				<div className="text-center">
+					<SocialLinks />
+				</div>
 				<H2>
 					<LenguaSpan en="The Name" es="El Nombre" />
 				</H2>
@@ -47,9 +50,6 @@ export default function About() {
 					<BackendTechLinks />
 				</div>
 				<AboutTheBackend />
-				<div className="text-center">
-					<SocialLinks />
-				</div>
 			</div>
 		</AppBody>
 	);
