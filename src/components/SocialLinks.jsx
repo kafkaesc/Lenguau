@@ -26,8 +26,8 @@ const socialLinks = [
 		altTextEn: '',
 		altTextEs: '',
 		siteName: 'LinkedIn',
-		url: 'https://www.linkedin.com/in/jahettinger'
-	}
+		url: 'https://www.linkedin.com/in/jahettinger',
+	},
 ];
 
 export default function SocialLinks() {
