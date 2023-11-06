@@ -1,7 +1,7 @@
 {
 	"name": "lenguau",
 	"version": "0.1.0",
-	"homepage": "https://kafkaesc.github.io/Lenguau/",
+	"homepage": "https://www.lenguau.com/",
 	"private": true,
 	"dependencies": {
 		"@heroicons/react": "^2.0.16",
