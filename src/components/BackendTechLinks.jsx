@@ -30,6 +30,9 @@ const techLinks = [
 	},
 ];
 
+/**
+ * @returns {JSX.Element} Linked icons for the technology used for the backend
+ */
 export default function BackendTechLinks() {
 	const lengua = useLengua();
 	return (

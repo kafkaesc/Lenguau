@@ -80,6 +80,9 @@ const Es = () => (
 	</>
 );
 
+/**
+ * @returns {JSX.Element} Description of the Lenguau frontend
+ */
 export default function AboutTheFrontend() {
 	return <LenguaSpan en={<En />} es={<Es />} />;
 }

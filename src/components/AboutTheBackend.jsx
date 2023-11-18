@@ -51,6 +51,9 @@ const Es = () => (
 	</>
 );
 
+/**
+ * @returns {JSX.Element} Description of the Lenguau backend
+ */
 export default function AboutTheBackend() {
 	return <LenguaSpan en={<En />} es={<Es />} />;
 }

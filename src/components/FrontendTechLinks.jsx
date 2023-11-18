@@ -38,6 +38,9 @@ const techLinks = [
 	},
 ];
 
+/**
+ * @returns {JSX.Element} Linked icons for the technology used for the frontend
+ */
 export default function FrontendTechLinks() {
 	const lengua = useLengua();
 	return (
