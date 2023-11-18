@@ -13,6 +13,9 @@ import BackendTechLinks from 'components/BackendTechLinks';
 import FrontendTechLinks from 'components/FrontendTechLinks';
 import SocialLinks from 'components/SocialLinks';
 
+/**
+ * @returns {JSX.Element} Page-level JSX component for the about page
+ */
 export default function About() {
 	return (
 		<AppBody>

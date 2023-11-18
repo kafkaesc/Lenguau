@@ -6,6 +6,9 @@ import AppBody from 'layout/AppBody';
 import LenguaToggle from 'layout/LenguaToggle';
 import PageTitle from 'layout/PageTitle';
 
+/**
+ * @returns {JSX.Element} Page-level JSX component for the instructions page
+ */
 export default function Instructions() {
 	const en = (
 		<div className="mt-2">
