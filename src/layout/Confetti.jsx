@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import { default as RConfetti } from 'react-confetti';
 
+/**
+ * @returns {JSX.Element} Returns a JSX element that will
+ * drop animated confetti downward
+ */
 export default function Confetti() {
 	const [dimensions, setDimensions] = useState({
 		height: window.innerHeight,
