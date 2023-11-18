@@ -15,6 +15,7 @@ import TcMatchSingleColumn from 'components/TcMatchSingleColumn';
 const ROUND_SIZE = 6;
 
 export default function TwoColumnMatch() {
+	// TODO: Break game logic out into a hook
 	const [clearedCount, setClearedCount] = useState(0);
 	const [columns, setColumns] = useState({ l: [], r: [] });
 	const [correctCount, setCorrectCount] = useState(0);
