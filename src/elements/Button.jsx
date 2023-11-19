@@ -1,3 +1,13 @@
+/**
+ * @param {string|undefined} className Optional string, if it exists it
+ * will be appended to the classes for the button element
+ * @param {boolean} disabled Optional boolean, if true the input field will be
+ * disabled, the default value value is false
+ * @param {any} props Optional string, if it exists it will be appended to the
+ * classes for the button element
+ * @returns {JSX.IntrinsicElements.button} Button element styled according to
+ * site styles
+ */
 export default function Button({ className, disabled, ...props }) {
 	return disabled ? (
 		className ? (
