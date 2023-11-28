@@ -10,7 +10,13 @@ export default function Home() {
 	return (
 		<AppBody>
 			<PageTitle hideBack={true}>
-				Len<span className="underline">guau</span>
+				<div className="h-24">
+					<img
+						alt="¡Lenguau!"
+						src="/lenguau-logo.png"
+						className="inline-block h-full"
+					/>
+				</div>
 			</PageTitle>
 			<div className="text-center">
 				<LenguaToggle />
