@@ -13,8 +13,8 @@ export default function Home() {
 				<div className="h-24">
 					<img
 						alt="¡Lenguau!"
-						src="/lenguau-logo.png"
 						className="inline-block h-full"
+						src="/lenguau-logo.png"
 					/>
 				</div>
 			</PageTitle>
