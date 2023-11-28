@@ -9,7 +9,7 @@ import PageTitle from 'layout/PageTitle';
 export default function Home() {
 	return (
 		<AppBody>
-			<PageTitle hideBack={true}>
+			<PageTitle hideBack={true} noMargin={true}>
 				<div className="h-24">
 					<img
 						alt="¡Lenguau!"

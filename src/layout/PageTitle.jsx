@@ -1,10 +1,10 @@
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
 import { Link } from 'react-router-dom';
 
-export default function PageTitle({ children, hideBack }) {
+export default function PageTitle({ children, hideBack, noMargin }) {
 	hideBack = !!hideBack;
-	return (
-		<div className="flex mb-2">
+	const child = (
+		<div className="flex">
 			<div className="flex-none w-12 h-12 text-center align-middle">
 				{!hideBack && (
 					<Link
@@ -19,5 +19,11 @@ export default function PageTitle({ children, hideBack }) {
 			<h1 className="text-5xl text-center grow">{children}</h1>
 			<div className="flex-none w-12 h-12 text-center align-middle"></div>
 		</div>
+	);
+
+	return noMargin ? (
+		<div className="m-0">{child}</div>
+	) : (
+		<div className="mb-2">{child}</div>
 	);
 }
