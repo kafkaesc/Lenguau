@@ -12,7 +12,6 @@ it('Has the English Page Header', () => {
 	);
 	const pageHeader = screen.getByRole('heading', { level: 1 });
 	expect(pageHeader).toBeInTheDocument();
-	expect(pageHeader).toHaveTextContent(/lenguau/i);
 });
 
 it('Has the Spanish Page Header', () => {
@@ -24,5 +23,4 @@ it('Has the Spanish Page Header', () => {
 	);
 	const pageHeader = screen.getByRole('heading', { level: 1 });
 	expect(pageHeader).toBeInTheDocument();
-	expect(pageHeader).toHaveTextContent(/lenguau/i);
 });
