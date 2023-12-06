@@ -1,4 +1,4 @@
-# Lenguau
+# ¡Lenguau!
 
 Built by Jared Hettinger
 
@@ -22,7 +22,7 @@ The full code for the Lenguau API can be viewed at https://github.com/kafkaesc/L
 1. Navigate to the project folder
 1. Run `npm test`
 
-# Lenguau
+# ¡Lenguau!
 
 Construido por Jared Hettinger
 
