@@ -3,6 +3,7 @@ module.exports = {
 	content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
 	theme: {
 		colors: {
+			'action-highlight': '#00f',
 			black: '#000',
 			blue: '#00f',
 			faded: '#aaa',
