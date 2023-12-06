@@ -35,16 +35,16 @@ const tutorialSteps = [
 		},
 	},
 	{
-		languageCode: 'en',
-		val: 'cat',
+		languageCode: 'es',
+		val: 'el gato',
 		uiInstruction: {
 			en: "Click on 'el gato' to select a word in Spanish",
 			es: "Oprima en 'el gato' para seleccionar una palabra en español",
 		},
 	},
 	{
-		languageCode: 'es',
-		val: 'el gato',
+		languageCode: 'en',
+		val: 'cat',
 		uiInstruction: {
 			en: "Click on 'cat' to select the matching word in English",
 			es: "Oprima en 'cat' para seleccionar la palabra que hacen juego en inglés",
@@ -109,11 +109,15 @@ export default function TcMatchTutorial() {
 					/>
 				</PageTitle>
 			</div>
-			<div className="text-center">
-				<LenguaSpan
-					en={tutorialSteps[step].uiInstruction.en}
-					es={tutorialSteps[step].uiInstruction.es}
-				/>
+			<div className="h-12 text-center">
+				<span>
+					<div className="table-cell h-12 mx-2 align-middle">
+						<LenguaSpan
+							en={tutorialSteps[step].uiInstruction.en}
+							es={tutorialSteps[step].uiInstruction.es}
+						/>
+					</div>
+				</span>
 			</div>
 			<div className="inline-block w-1/2 p-1">
 				<TcMatchSingleColumn
@@ -131,9 +135,11 @@ export default function TcMatchTutorial() {
 					vocab={columns.r}
 				/>
 			</div>
-			<div>
+			<div className="text-center">
 				{/* TODO: Remove this when buttons themselves are working to move the tutorial forward */}
-				<Button onClick={takeNextStep}>Test</Button>
+				<Button onClick={takeNextStep}>Next</Button>
+				<Button onClick={() => setStep(0)}>Reset</Button>
+				<br />
 				step: {step}; tutorialSteps.length: {tutorialSteps.length};
 			</div>
 		</AppBody>
