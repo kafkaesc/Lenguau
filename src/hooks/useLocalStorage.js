@@ -2,11 +2,17 @@
 export function useLocalStorage() {
 	function add(key, val) {}
 
-	function clearAll(key) {}
+	function clearAll() {
+		localStorage.clear();
+	}
 
-	function clear(key) {}
+	function clear(key) {
+		delete localStorage[key];
+	}
 
-	function get(key) {}
+	function get(key) {
+		return JSON.parse('' + localStorage.getItem(key));
+	}
 
 	return { add, clearAll, clear, get };
 }
