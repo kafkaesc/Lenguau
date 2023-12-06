@@ -4,7 +4,7 @@
 		"name": "Jared Hettinger",
 		"url": "https://github.com/kafkaesc"
 	},
-	"description": "Lenguau ~ The place to practice your Spanish ~ Built by Jared Hettinger",
+	"description": "¡Lenguau! ~ The place to practice your Spanish ~ Built by Jared Hettinger",
 	"display": "standalone",
 	"homepage_url": "https://www.lenguau.com/",
 	"icons": [
@@ -24,8 +24,8 @@
 			"type": "image/png"
 		}
 	],
-	"name": "Lenguau",
-	"short_name": "Lenguau",
+	"name": "¡Lenguau!",
+	"short_name": "¡Lenguau!",
 	"start_url": ".",
 	"theme_color": "#000000"
 }

@@ -9,7 +9,9 @@ const En = () => (
 );
 
 const Es = () => (
-	<P className="text-center">Lengua y guau se combinan convertirse Len-guau!</P>
+	<P className="text-center">
+		Lengua y guau se combinan convertirse ¡Len-guau!
+	</P>
 );
 
 /**
