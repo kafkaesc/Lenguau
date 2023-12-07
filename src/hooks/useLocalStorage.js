@@ -5,7 +5,10 @@
 const lsPrefix = 'le::';
 
 /**
- * Custom hook for managing local storage from the React app
+ * Custom hook for managing local storage from the React app. This hook should
+ * never be called directly from a component. If the site needs something in
+ * local storage there should be a specific hook for that purpose that
+ * utilizes this one.
  * @returns Functions for managing local storage
  */
 export function useLocalStorage() {
