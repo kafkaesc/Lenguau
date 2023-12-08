@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import 'index.css';
 import App from 'App';
 import reportWebVitals from 'reportWebVitals';
-import { createHashRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import About from 'pages/About';
 import Error from 'Error';
@@ -15,7 +15,7 @@ import TcMatchTutorial from 'components/TcMatchTutorial';
 import TwoColumnMatch from 'pages/TwoColumnMatch';
 import TypeOut from 'pages/TypeOut';
 
-const router = createHashRouter([
+const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <App />,
