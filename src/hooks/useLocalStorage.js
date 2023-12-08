@@ -2,7 +2,7 @@
  * The lsPrefix is used to prefix the keys being used in local storage and
  * provide the site with some namespace protection if it's in a shared domain.
  */
-const lsPrefix = 'le::';
+const lsPrefix = '¡L!::';
 
 /**
  * Custom hook for managing local storage from the React app. This hook should
