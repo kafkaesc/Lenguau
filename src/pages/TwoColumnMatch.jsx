@@ -16,14 +16,16 @@ const ROUND_SIZE = 6;
 
 export default function TwoColumnMatch() {
 	// TODO: Break game logic out into a hook
-	const [clearedCount, setClearedCount] = useState(0);
 	const [columns, setColumns] = useState({ l: [], r: [] });
-	const [correctCount, setCorrectCount] = useState(0);
-	const [finished, setFinished] = useState(false);
 	const [lValue, setLValue] = useState({});
-	const [round, setRound] = useState(1);
 	const [rValue, setRValue] = useState({});
-	const [wrongCount, setWrongCount] = useState(0);
+	const [gameState, setGameState] = useState({
+		cleared: 0,
+		correct: 0,
+		finished: false,
+		round: 1,
+		wrong: 0,
+	});
 
 	const { categoryTitle } = useParams();
 	const vocabBox = useVocabBox(categoryTitle, ROUND_SIZE);
@@ -61,23 +63,31 @@ export default function TwoColumnMatch() {
 		};
 
 		if (checkMatch()) {
-			setCorrectCount((prev) => prev + 1);
+			setGameState((prev) => {
+				const newState = { ...prev };
+				newState.cleared += 1;
+				newState.correct += 1;
+				return newState;
+			});
 			lValue.cleared = true;
 			rValue.cleared = true;
-			setClearedCount((prev) => prev + 1);
 			clearSelected();
 		}
 		if (checkMismatch()) {
-			setWrongCount((prev) => prev + 1);
+			setGameState((prev) => {
+				const newState = { ...prev };
+				newState.wrong += 1;
+				return newState;
+			});
 			clearSelected();
 		}
 	}, [lValue, rValue]);
 
 	useEffect(() => {
-		if (vocabBox && clearedCount === columns.l.length) {
-			if (vocabBox.hasRound(round + 1)) {
+		if (vocabBox && gameState.cleared === columns.l.length) {
+			if (vocabBox.hasRound(gameState.round + 1)) {
 				let newColumns = [];
-				const roundVocab = vocabBox.getRound(round + 1);
+				const roundVocab = vocabBox.getRound(gameState.round + 1);
 				newColumns.l = shuffle(
 					roundVocab.map((vo) => {
 						return { ...vo, cleared: false };
@@ -88,15 +98,23 @@ export default function TwoColumnMatch() {
 						return { ...vo, cleared: false };
 					})
 				);
-				setClearedCount(0);
+				setGameState((prev) => {
+					const newState = { ...prev };
+					newState.cleared = 0;
+					newState.round += 1;
+					return newState;
+				});
 				setColumns(newColumns);
-				setRound((prev) => prev + 1);
 			} else {
-				setFinished(true);
+				setGameState((prev) => {
+					const newState = { ...prev };
+					newState.finished = true;
+					return newState;
+				});
 			}
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [clearedCount]);
+	}, [gameState]);
 
 	useEffect(() => {
 		if (vocabBox) {
@@ -107,10 +125,13 @@ export default function TwoColumnMatch() {
 				l: shuffle(vocabList),
 				r: shuffle(vocabList),
 			};
-			console.log('newCols: ', newCols);
 			setColumns(newCols);
-			setFinished(false);
-			setRound(1);
+			setGameState((prev) => {
+				const newState = { ...prev };
+				newState.finished = false;
+				newState.round = 1;
+				return newState;
+			});
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [categoryTitle, vocabBox.title]);
@@ -125,10 +146,11 @@ export default function TwoColumnMatch() {
 					/>
 				</PageTitle>
 				<P className="text-center">
-					Round: {round}; Correct: {correctCount}; Wrong: {wrongCount};
+					Round: {gameState.round}; Correct: {gameState.correct}; Wrong:{' '}
+					{gameState.wrong};
 				</P>
 			</div>
-			{finished ? (
+			{gameState.finished ? (
 				<>
 					<Confetti />
 					<P className="text-center text-7xl">Finished!</P>
