@@ -47,10 +47,18 @@ const tutorialSteps = [
 	},
 ];
 
+/** Custom hook for moving through the tutorial for the two column match challenge
+ * @returns
+ * - nextStep, function moving to the next step of the tutorial
+ * - restart, restarts the tutorial from the first step
+ * - step, object containing the data for the current step
+ * - tutorialGameData, custom data matching the tutorial for two column match
+ */
 export function useTcStepEnforcer() {
 	const _step_i = useRef(0);
 	const [_step, _setStep] = useState(tutorialSteps[0]);
 
+	/** Move to the next step of the tutorial */
 	function nextStep() {
 		_step_i.current =
 			_step_i.current < tutorialSteps.length - 1
@@ -59,6 +67,7 @@ export function useTcStepEnforcer() {
 		_setStep({ ...tutorialSteps[_step_i.current] });
 	}
 
+	/** Restart from the first step */
 	function restart() {
 		_step_i.current = 0;
 		_setStep({ ...tutorialSteps[0] });
