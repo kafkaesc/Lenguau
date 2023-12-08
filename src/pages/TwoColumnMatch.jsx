@@ -84,7 +84,7 @@ export default function TwoColumnMatch() {
 	}, [lValue, rValue]);
 
 	useEffect(() => {
-		if (vocabBox && gameState.cleared === columns.l.length) {
+		if (vocabBox && gameState && gameState.cleared === columns.l.length) {
 			if (vocabBox.hasRound(gameState.round + 1)) {
 				let newColumns = [];
 				const roundVocab = vocabBox.getRound(gameState.round + 1);
