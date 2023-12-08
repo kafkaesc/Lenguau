@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 // TODO: Move tutorialGameData and tutorialSteps to the Lenguau API
 const tutorialGameData = {
@@ -48,20 +48,19 @@ const tutorialSteps = [
 ];
 
 export function useTcStepEnforcer() {
-	// TODO: Swap stepIndex into useRef
-	const [_stepIndex, _setStepIndex] = useState(0);
+	const _step_i = useRef(0);
 	const [_step, _setStep] = useState(tutorialSteps[0]);
 
 	function nextStep() {
-		_setStepIndex((prev) => {
-			const newStepIndex = prev < tutorialSteps.length - 1 ? prev + 1 : prev;
-			_setStep({ ...tutorialSteps[newStepIndex] });
-			return newStepIndex;
-		});
+		_step_i.current =
+			_step_i.current < tutorialSteps.length - 1
+				? _step_i.current + 1
+				: _step_i.current;
+		_setStep({ ...tutorialSteps[_step_i.current] });
 	}
 
 	function restart() {
-		_setStepIndex(0);
+		_step_i.current = 0;
 		_setStep({ ...tutorialSteps[0] });
 	}
 
