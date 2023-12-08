@@ -1,21 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { shuffle } from 'utilities/GameUtil';
 import { useVocabBox } from 'hooks/useVocabBox';
 
-import LenguaSpan from 'elements/LenguaSpan';
-import P from 'elements/P';
-
-import AppBody from 'layout/AppBody';
-import Confetti from 'layout/Confetti';
-import PageTitle from 'layout/PageTitle';
-
-import TcMatchSingleColumn from 'components/TcMatchSingleColumn';
-
-const ROUND_SIZE = 6;
-
-export default function TwoColumnMatch() {
-	// TODO: Break game logic out into a hook
+/** Custom hook containing the logic for running the two column match challenge
+ * @param {string} categoryTitle
+ * @param {number} roundSize
+ */
+export function useTcMatchRunner(categoryTitle, roundSize) {
 	const [columns, setColumns] = useState({ l: [], r: [] });
 	const [lValue, setLValue] = useState({});
 	const [rValue, setRValue] = useState({});
@@ -27,8 +18,7 @@ export default function TwoColumnMatch() {
 		wrong: 0,
 	});
 
-	const { categoryTitle } = useParams();
-	const vocabBox = useVocabBox(categoryTitle, ROUND_SIZE);
+	const vocabBox = useVocabBox(categoryTitle, roundSize);
 
 	function clearSelected() {
 		setLValue({});
@@ -101,10 +91,14 @@ export default function TwoColumnMatch() {
 				setGameState((prev) => {
 					const newState = { ...prev };
 					newState.cleared = 0;
-					newState.round += 1;
 					return newState;
 				});
 				setColumns(newColumns);
+				setGameState((prev) => {
+					const newState = { ...prev };
+					newState.round += 1;
+					return newState;
+				});
 			} else {
 				setGameState((prev) => {
 					const newState = { ...prev };
@@ -116,65 +110,5 @@ export default function TwoColumnMatch() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [gameState]);
 
-	useEffect(() => {
-		if (vocabBox) {
-			const vocabList = vocabBox.getRound(1).map((vo) => {
-				return { ...vo, cleared: false };
-			});
-			const newCols = {
-				l: shuffle(vocabList),
-				r: shuffle(vocabList),
-			};
-			setColumns(newCols);
-			setGameState((prev) => {
-				const newState = { ...prev };
-				newState.finished = false;
-				newState.round = 1;
-				return newState;
-			});
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [categoryTitle, vocabBox.title]);
-
-	return (
-		<AppBody>
-			<div className="w-full">
-				<PageTitle>
-					<LenguaSpan
-						en={vocabBox.title.en || ''}
-						es={vocabBox.title.es || ''}
-					/>
-				</PageTitle>
-				<P className="text-center">
-					Round: {gameState.round}; Correct: {gameState.correct}; Wrong:{' '}
-					{gameState.wrong};
-				</P>
-			</div>
-			{gameState.finished ? (
-				<>
-					<Confetti />
-					<P className="text-center text-7xl">Finished!</P>
-				</>
-			) : (
-				<>
-					<div className="inline-block w-1/2 p-1">
-						<TcMatchSingleColumn
-							languageCode="en"
-							select={selectLeftColumn}
-							selectedVocab={lValue}
-							vocab={columns.l}
-						/>
-					</div>
-					<div className="inline-block w-1/2 p-1">
-						<TcMatchSingleColumn
-							languageCode="es"
-							select={selectRightColumn}
-							selectedVocab={rValue}
-							vocab={columns.r}
-						/>
-					</div>
-				</>
-			)}
-		</AppBody>
-	);
+	return { columns, selectLeftColumn, selectRightColumn, gameState };
 }
