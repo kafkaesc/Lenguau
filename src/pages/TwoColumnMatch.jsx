@@ -150,7 +150,7 @@ export default function TwoColumnMatch() {
 					{gameState.wrong};
 				</P>
 			</div>
-			{gameState.finished ? (
+			{gameState && gameState.finished ? (
 				<>
 					<Confetti />
 					<P className="text-center text-7xl">Finished!</P>
