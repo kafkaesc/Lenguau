@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLenguaApi } from 'context/LenguaApiContext';
-import { shuffle } from 'utilities/GameUtil';
+import { useGameAction } from 'hooks/useGameAction';
 import { useOfflineData } from 'hooks/useOfflineData';
 
 /**
@@ -18,6 +18,7 @@ export function useVocabBox(categoryTitle, roundSize) {
 	const [__vocabTitle, __setVocabTitle] = useState({ en: '', es: '' });
 
 	const apiBase = useLenguaApi();
+	const { shuffle } = useGameAction();
 	const { getOfflineVocab } = useOfflineData();
 
 	/**
