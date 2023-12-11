@@ -1,7 +1,6 @@
+import FloatUp from 'components/FloatUp';
 import { useLengua } from 'context/LenguaContext';
-import { sanitizeImageName } from 'utilities/PathUtil';
-
-import FloatUp from './FloatUp';
+import { usePathSanitizer } from 'hooks/usePathSanitizer';
 
 const socialLinks = [
 	{
@@ -35,6 +34,7 @@ const socialLinks = [
  */
 export default function SocialLinks() {
 	const lengua = useLengua();
+	const { sanitizeImageName } = usePathSanitizer();
 	return (
 		<ul className="mb-2 list-none">
 			{socialLinks.map((so) => (

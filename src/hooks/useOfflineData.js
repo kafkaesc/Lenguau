@@ -1,14 +1,14 @@
-import { sanitizeJsonName } from 'utilities/PathUtil';
+import { usePathSanitizer } from 'hooks/usePathSanitizer';
 
 export function useOfflineData() {
+	const { sanitizeJsonName } = usePathSanitizer();
+
 	function getOfflineCategories() {
-		console.log('getOfflineCategories');
 		const offlineData = require(`assets/offline-data/set-categories.json`);
 		return offlineData.categoryList;
 	}
 
 	function getOfflineVocab(categoryTitle) {
-		console.log('getOfflineVocab');
 		if (typeof categoryTitle !== 'string') {
 			console.error(
 				'Non string argument passed to getOfflineVocab in useOfflineData'
