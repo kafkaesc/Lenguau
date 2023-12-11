@@ -4,6 +4,9 @@ import LenguaSpan from 'elements/LenguaSpan';
 import LenguaToggle from 'layout/LenguaToggle';
 import PageTitle from 'layout/PageTitle';
 
+/**
+ * @returns {JSX.Element} Page-level JSX component for selecting a vocabulary category
+ */
 export default function SelectCategory() {
 	return (
 		<AppBody>

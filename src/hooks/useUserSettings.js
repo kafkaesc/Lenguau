@@ -17,7 +17,7 @@ export function useUserSettings() {
 	}
 
 	/**
-	 * @param {"en"|"es"} languageCode
+	 * @param {"en"|"es"} languageCode The new code to set
 	 */
 	function setUserLanguage(languageCode) {
 		if (languageCode === 'en' || languageCode === 'es') {

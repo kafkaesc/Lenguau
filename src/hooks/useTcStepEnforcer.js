@@ -47,7 +47,8 @@ const tutorialSteps = [
 	},
 ];
 
-/** Custom hook for moving through the tutorial for the two column match challenge
+/**
+ * Custom hook for moving through the tutorial for the two column match challenge
  * @returns
  * - nextStep, function moving to the next step of the tutorial
  * - restart, restarts the tutorial from the first step
