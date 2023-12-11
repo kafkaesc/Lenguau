@@ -1,10 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import { LenguaProvider } from 'context/LenguaContext';
 import AboutTheName from './AboutTheName';
+import { useUserSettings } from 'hooks/useUserSettings';
 
 it('Explains the name in English :)', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('en');
 	render(
-		<LenguaProvider languageCode="en">
+		<LenguaProvider>
 			<AboutTheName />
 		</LenguaProvider>
 	);
@@ -13,8 +16,10 @@ it('Explains the name in English :)', () => {
 });
 
 it('Explains the name in Spanish :)', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('es');
 	render(
-		<LenguaProvider languageCode="es">
+		<LenguaProvider>
 			<AboutTheName />
 		</LenguaProvider>
 	);

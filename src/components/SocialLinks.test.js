@@ -1,10 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import { LenguaProvider } from 'context/LenguaContext';
 import SocialLinks from './SocialLinks';
+import { useUserSettings } from 'hooks/useUserSettings';
 
 it('Has the social links in English', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('en');
 	render(
-		<LenguaProvider languageCode={'en'}>
+		<LenguaProvider>
 			<SocialLinks />
 		</LenguaProvider>
 	);
@@ -17,8 +20,10 @@ it('Has the social links in English', () => {
 });
 
 it('Has the social links in English with no Spanish', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('en');
 	render(
-		<LenguaProvider languageCode={'en'}>
+		<LenguaProvider>
 			<SocialLinks />
 		</LenguaProvider>
 	);
@@ -35,8 +40,10 @@ it('Has the social links in English with no Spanish', () => {
 });
 
 it('Has the social links in Spanish', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('es');
 	render(
-		<LenguaProvider languageCode={'es'}>
+		<LenguaProvider>
 			<SocialLinks />
 		</LenguaProvider>
 	);
@@ -51,8 +58,10 @@ it('Has the social links in Spanish', () => {
 });
 
 it('Has the social links in Spanish with no English', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('es');
 	render(
-		<LenguaProvider languageCode={'es'}>
+		<LenguaProvider>
 			<SocialLinks />
 		</LenguaProvider>
 	);
@@ -65,8 +74,10 @@ it('Has the social links in Spanish with no English', () => {
 });
 
 it('Has the social logos with English alt text', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('en');
 	render(
-		<LenguaProvider languageCode={'en'}>
+		<LenguaProvider>
 			<SocialLinks />
 		</LenguaProvider>
 	);
@@ -79,8 +90,10 @@ it('Has the social logos with English alt text', () => {
 });
 
 it('Has the social logos with Spanish alt text', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('es');
 	render(
-		<LenguaProvider languageCode={'es'}>
+		<LenguaProvider>
 			<SocialLinks />
 		</LenguaProvider>
 	);
