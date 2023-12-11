@@ -7,8 +7,7 @@ import AppBody from 'layout/AppBody';
 import Confetti from 'layout/Confetti';
 import PageTitle from 'layout/PageTitle';
 import GmGrid from 'components/GmGrid';
-
-import { shuffle } from 'utilities/GameUtil';
+import { useGameAction } from 'hooks/useGameAction';
 import { useVocabBox } from 'hooks/useVocabBox';
 
 const ROUND_SIZE = 6;
@@ -25,6 +24,7 @@ export default function GridMatch() {
 	const [wrongCount, setWrongCount] = useState(0);
 
 	const { categoryTitle } = useParams();
+	const { shuffle } = useGameAction();
 	const vocabBox = useVocabBox(categoryTitle, ROUND_SIZE);
 
 	function clearSelection() {

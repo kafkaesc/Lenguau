@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { shuffle } from 'utilities/GameUtil';
+import { useGameAction } from 'hooks/useGameAction';
 import { useVocabBox } from 'hooks/useVocabBox';
 
 /** Custom hook containing the logic for running the two column match challenge
@@ -28,6 +28,7 @@ export function useTcMatchRunner(categoryTitle, roundSize) {
 		wrong: 0,
 	});
 
+	const { shuffle } = useGameAction();
 	const vocabBox = useVocabBox(categoryTitle, roundSize);
 
 	/**

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLenguaApi } from 'context/LenguaApiContext';
-import { shuffle } from 'utilities/GameUtil';
-import { getOfflineVocab } from 'utilities/OfflineUtil';
+import { useGameAction } from 'hooks/useGameAction';
+import { useOfflineData } from 'hooks/useOfflineData';
 
 /**
  * This hook creates a "box" of shuffled vocab objects a component
@@ -18,6 +18,8 @@ export function useVocabBox(categoryTitle, roundSize) {
 	const [__vocabTitle, __setVocabTitle] = useState({ en: '', es: '' });
 
 	const apiBase = useLenguaApi();
+	const { shuffle } = useGameAction();
+	const { getOfflineVocab } = useOfflineData();
 
 	/**
 	 * @param {number} round The round (1-indexed) to retrieve the vocabulary for
@@ -75,6 +77,7 @@ export function useVocabBox(categoryTitle, roundSize) {
 				loadLocalVocab(categoryTitle);
 			});
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [__categoryTitle, __roundSize, apiBase, categoryTitle, roundSize]);
 
 	return { title: __vocabTitle, getRound, hasRound };
