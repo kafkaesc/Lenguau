@@ -3,8 +3,8 @@ import { shuffle } from 'utilities/GameUtil';
 import { useVocabBox } from 'hooks/useVocabBox';
 
 /** Custom hook containing the logic for running the two column match challenge
- * @param {string} categoryTitle
- * @param {number} roundSize
+ * @param {string} categoryTitle The category of vocab for the game
+ * @param {number} roundSize The amount of rows per round for the game
  */
 export function useTcMatchRunner(categoryTitle, roundSize) {
 	const [columns, setColumns] = useState({ l: [], r: [] });
@@ -20,15 +20,30 @@ export function useTcMatchRunner(categoryTitle, roundSize) {
 
 	const vocabBox = useVocabBox(categoryTitle, roundSize);
 
+	/**
+	 * Clear both the left and right column selections
+	 */
 	function clearSelected() {
 		setLValue({});
 		setRValue({});
 	}
 
+	/**
+	 * @param {*} val Vocab object containing en, es, representing the
+	 * matching English and Spanish words
+	 *
+	 * Highlight the left column item matching val
+	 */
 	function selectLeftColumn(val) {
 		setLValue((prev) => (prev.en === val.en ? {} : val));
 	}
 
+	/**
+	 * @param {*} val Vocab object containing en, es, representing the
+	 * matching English and Spanish words
+	 *
+	 * Highlight the right column item matching val
+	 */
 	function selectRightColumn(val) {
 		setRValue((prev) => (prev.es === val.es ? {} : val));
 	}
@@ -71,10 +86,15 @@ export function useTcMatchRunner(categoryTitle, roundSize) {
 			});
 			clearSelected();
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [lValue, rValue]);
 
 	useEffect(() => {
-		if (vocabBox && gameState.cleared === columns.l.length) {
+		if (
+			vocabBox &&
+			columns.l.length > 0 &&
+			gameState.cleared === columns.l.length
+		) {
 			if (vocabBox.hasRound(gameState.round + 1)) {
 				let newColumns = [];
 				const roundVocab = vocabBox.getRound(gameState.round + 1);
@@ -91,14 +111,10 @@ export function useTcMatchRunner(categoryTitle, roundSize) {
 				setGameState((prev) => {
 					const newState = { ...prev };
 					newState.cleared = 0;
-					return newState;
-				});
-				setColumns(newColumns);
-				setGameState((prev) => {
-					const newState = { ...prev };
 					newState.round += 1;
 					return newState;
 				});
+				setColumns(newColumns);
 			} else {
 				setGameState((prev) => {
 					const newState = { ...prev };
@@ -110,5 +126,33 @@ export function useTcMatchRunner(categoryTitle, roundSize) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [gameState]);
 
-	return { columns, selectLeftColumn, selectRightColumn, gameState };
+	useEffect(() => {
+		if (vocabBox) {
+			const vocabList = vocabBox.getRound(1).map((vo) => {
+				return { ...vo, cleared: false };
+			});
+			const newCols = {
+				l: shuffle(vocabList),
+				r: shuffle(vocabList),
+			};
+			setColumns(newCols);
+			setGameState((prev) => {
+				const newState = { ...prev };
+				newState.finished = false;
+				newState.round = 1;
+				return newState;
+			});
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [categoryTitle, vocabBox.title]);
+
+	return {
+		bilingualTitle: vocabBox.title,
+		columns,
+		lValue,
+		rValue,
+		selectLeftColumn,
+		selectRightColumn,
+		gameState,
+	};
 }

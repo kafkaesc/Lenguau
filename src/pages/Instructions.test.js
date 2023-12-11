@@ -2,10 +2,13 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { LenguaProvider } from 'context/LenguaContext';
 import Instructions from './Instructions';
+import { useUserSettings } from 'hooks/useUserSettings';
 
 it('Has the English Page Header', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('en');
 	render(
-		<LenguaProvider languageCode={'en'}>
+		<LenguaProvider>
 			<Instructions />
 		</LenguaProvider>,
 		{ wrapper: MemoryRouter }
@@ -16,8 +19,10 @@ it('Has the English Page Header', () => {
 });
 
 it('Has the Spanish Page Header', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('es');
 	render(
-		<LenguaProvider languageCode={'es'}>
+		<LenguaProvider>
 			<Instructions />
 		</LenguaProvider>,
 		{ wrapper: MemoryRouter }

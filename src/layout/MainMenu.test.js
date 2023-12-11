@@ -2,10 +2,13 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { LenguaProvider } from 'context/LenguaContext';
 import MainMenu from './MainMenu';
+import { useUserSettings } from 'hooks/useUserSettings';
 
 it('Has the English menu items', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('en');
 	render(
-		<LenguaProvider languageCode={'en'}>
+		<LenguaProvider>
 			<MainMenu />
 		</LenguaProvider>,
 		{ wrapper: MemoryRouter }
@@ -29,8 +32,10 @@ it('Has the English menu items', () => {
 });
 
 it('Has the Spanish menu items', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('es');
 	render(
-		<LenguaProvider languageCode={'es'}>
+		<LenguaProvider>
 			<MainMenu />
 		</LenguaProvider>,
 		{ wrapper: MemoryRouter }

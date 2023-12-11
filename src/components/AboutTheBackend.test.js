@@ -1,10 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import { LenguaProvider } from 'context/LenguaContext';
 import AboutTheBackend from './AboutTheBackend';
+import { useUserSettings } from 'hooks/useUserSettings';
 
 it('Has the expected links in English', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('en');
 	render(
-		<LenguaProvider languageCode={'en'}>
+		<LenguaProvider>
 			<AboutTheBackend />
 		</LenguaProvider>
 	);
@@ -26,8 +29,10 @@ it('Has the expected links in English', () => {
 });
 
 it('Has the expected links in Spanish', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('es');
 	render(
-		<LenguaProvider languageCode={'es'}>
+		<LenguaProvider>
 			<AboutTheBackend />
 		</LenguaProvider>
 	);
