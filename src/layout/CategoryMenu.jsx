@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useLenguaApi } from 'context/LenguaApiContext';
-import { getOfflineCategories } from 'utilities/OfflineUtil';
+import { useOfflineData } from 'hooks/useOfflineData';
 
 import LenguaSpan from 'elements/LenguaSpan';
 import MenuButton from 'elements/MenuButton';
@@ -11,6 +11,7 @@ export default function CategoryMenu() {
 
 	const gamePath = useLocation().pathname.split('/')[1];
 	const apiBase = useLenguaApi();
+	const { getOfflineCategories } = useOfflineData();
 
 	useEffect(() => {
 		async function myFetch() {
@@ -28,6 +29,7 @@ export default function CategoryMenu() {
 			const localCategories = getOfflineCategories();
 			setCategories(localCategories);
 		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [apiBase]);
 
 	return (
