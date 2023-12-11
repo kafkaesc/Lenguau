@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { shuffle } from 'utilities/GameUtil';
-import { useVocabBox } from 'hooks/useVocabBox';
 
 import LenguaSpan from 'elements/LenguaSpan';
 import P from 'elements/P';
-
 import AppBody from 'layout/AppBody';
 import Confetti from 'layout/Confetti';
 import PageTitle from 'layout/PageTitle';
-
 import GmGrid from 'components/GmGrid';
+
+import { shuffle } from 'utilities/GameUtil';
+import { useVocabBox } from 'hooks/useVocabBox';
 
 const ROUND_SIZE = 6;
 

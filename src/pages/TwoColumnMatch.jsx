@@ -1,13 +1,13 @@
 import { useParams } from 'react-router-dom';
-import { useTcMatchRunner } from 'hooks/useTcMatchRunner';
 
 import LenguaSpan from 'elements/LenguaSpan';
 import P from 'elements/P';
 import AppBody from 'layout/AppBody';
 import Confetti from 'layout/Confetti';
 import PageTitle from 'layout/PageTitle';
-
 import TcMatchSingleColumn from 'components/TcMatchSingleColumn';
+
+import { useTcMatchRunner } from 'hooks/useTcMatchRunner';
 
 const ROUND_SIZE = 6;
 
@@ -15,7 +15,8 @@ const ROUND_SIZE = 6;
  * TwoColumnMatch will present two columns of English and Spanish words on
  * the left and right respectively. A user can select one word at a time from
  * each column. When the two selected words are a match they will be disabled
- * and the score will increment. */
+ * and the score will increment.
+ */
 export default function TwoColumnMatch() {
 	const { categoryTitle } = useParams();
 

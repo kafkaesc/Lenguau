@@ -3,6 +3,14 @@ import { useLenguaApi } from 'context/LenguaApiContext';
 import { shuffle } from 'utilities/GameUtil';
 import { getOfflineVocab } from 'utilities/OfflineUtil';
 
+/**
+ * This hook creates a "box" of shuffled vocab objects a component
+ * can move through by rounds
+ * @param {string} categoryTitle The vocabulary category for this box
+ * @param {number} roundSize How many words should be included per round
+ * @returns title: an en/es object with the titles for the category;
+ * getRound, hasRound: functions to move through the vocabulary rounds
+ */
 export function useVocabBox(categoryTitle, roundSize) {
 	const [__categoryTitle, __setCategoryTitle] = useState('');
 	const [__roundSize, __setRoundSize] = useState(0);
@@ -11,6 +19,10 @@ export function useVocabBox(categoryTitle, roundSize) {
 
 	const apiBase = useLenguaApi();
 
+	/**
+	 * @param {number} round The round (1-indexed) to retrieve the vocabulary for
+	 * @returns {array} Array of vocab objects, the length will match the hook assigned roundSize
+	 */
 	function getRound(round) {
 		if (!Array.isArray(__vocabBox) || !hasRound(round)) {
 			return [];
@@ -23,10 +35,19 @@ export function useVocabBox(categoryTitle, roundSize) {
 		}
 	}
 
+	/**
+	 * @param {number} round The round (1-indexed) to check if it exists
+	 * @returns true if a round exists for the argument, otherwise false
+	 */
 	function hasRound(round) {
 		return !((round - 1) * __roundSize >= __vocabBox.length);
 	}
 
+	/**
+	 * If there is an issue calling the data from Lenguau API, this is
+	 * the fallback to use a smaller set of local data.
+	 * @param {string} categoryTitle The vocabulary category for this box
+	 */
 	function loadLocalVocab(categoryTitle) {
 		const localVocab = getOfflineVocab(categoryTitle);
 		__setVocabBox(shuffle([...localVocab.vocabList]));

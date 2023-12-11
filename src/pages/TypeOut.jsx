@@ -1,18 +1,22 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useVocabBox } from 'hooks/useVocabBox';
 
 import Button from 'elements/Button';
 import H2 from 'elements/H2';
 import Input from 'elements/Input';
 import LenguaSpan from 'elements/LenguaSpan';
 import P from 'elements/P';
-
 import AppBody from 'layout/AppBody';
 import PageTitle from 'layout/PageTitle';
 
+import { useVocabBox } from 'hooks/useVocabBox';
+
 const ROUND_SIZE = 1;
 
+/**
+ * WIP: Intention is to have the user type a translation to match the provided word
+ * @returns {JSX.Element} Page-level JSX component for the type out game
+ */
 export default function TypeOut() {
 	// TODO: Make default value null when loading from vocabBox
 	const [activeWords /*, setActiveWords*/] = useState({

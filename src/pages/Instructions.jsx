@@ -1,7 +1,6 @@
 import H2 from 'elements/H2';
 import LenguaSpan from 'elements/LenguaSpan';
 import P from 'elements/P';
-
 import AppBody from 'layout/AppBody';
 import LenguaToggle from 'layout/LenguaToggle';
 import PageTitle from 'layout/PageTitle';

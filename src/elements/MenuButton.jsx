@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
  * nested inside the Link/button
  * @param {any} props Component attributes that will be passed onto
  * the React Router Link component
- * @returns {JSX.Element} A link styled like a site button with]
+ * @returns {JSX.Element} A link styled like a site button with
  * a twisting hover animation
  */
 export default function MenuButton({ children, ...props }) {

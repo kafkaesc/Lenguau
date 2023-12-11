@@ -5,6 +5,16 @@ import { useVocabBox } from 'hooks/useVocabBox';
 /** Custom hook containing the logic for running the two column match challenge
  * @param {string} categoryTitle The category of vocab for the game
  * @param {number} roundSize The amount of rows per round for the game
+ * @returns
+ * - bilingualTitle, an en/es object with the title in English/Spanish
+ * - columns, an l/r object containing matching objects on a left/right side
+ * - lValue, empty or vocab object representing a selected item in the left column
+ * - rValue, empty or vocab object representing a selected item in the right column
+ * - selectLeftColumn, function to select a vocab item in the left column
+ * - selectRightColumn, function to select a vocab item in the right column
+ * - gameState, object containing data for cleared, correct, and wrong to
+ * indicate user guesses so far, plus finished and round to indicate progress
+ * through the game
  */
 export function useTcMatchRunner(categoryTitle, roundSize) {
 	const [columns, setColumns] = useState({ l: [], r: [] });
@@ -29,20 +39,19 @@ export function useTcMatchRunner(categoryTitle, roundSize) {
 	}
 
 	/**
+	 * Highlight the left column item matching val
 	 * @param {*} val Vocab object containing en, es, representing the
 	 * matching English and Spanish words
-	 *
-	 * Highlight the left column item matching val
 	 */
 	function selectLeftColumn(val) {
 		setLValue((prev) => (prev.en === val.en ? {} : val));
 	}
 
 	/**
+	 * Highlight the right column item matching val
+	 *
 	 * @param {*} val Vocab object containing en, es, representing the
 	 * matching English and Spanish words
-	 *
-	 * Highlight the right column item matching val
 	 */
 	function selectRightColumn(val) {
 		setRValue((prev) => (prev.es === val.es ? {} : val));
