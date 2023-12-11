@@ -1,6 +1,8 @@
-import { sanitizeJsonName } from 'utilities/PathUtil';
+import { usePathSanitizer } from 'hooks/usePathSanitizer';
 
 export function useOfflineData() {
+	const { sanitizeJsonName } = usePathSanitizer();
+
 	function getOfflineCategories() {
 		console.log('getOfflineCategories');
 		const offlineData = require(`assets/offline-data/set-categories.json`);
