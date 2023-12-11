@@ -1,10 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import { LenguaProvider } from 'context/LenguaContext';
 import FrontendTechLinks from './FrontendTechLinks';
+import { useUserSettings } from 'hooks/useUserSettings';
 
 it('Has the frontend links in English', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('en');
 	render(
-		<LenguaProvider languageCode={'en'}>
+		<LenguaProvider>
 			<FrontendTechLinks />
 		</LenguaProvider>
 	);
@@ -19,8 +22,10 @@ it('Has the frontend links in English', () => {
 });
 
 it('Has the frontend links in English with no Spanish', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('en');
 	render(
-		<LenguaProvider languageCode={'en'}>
+		<LenguaProvider>
 			<FrontendTechLinks />
 		</LenguaProvider>
 	);
@@ -37,8 +42,10 @@ it('Has the frontend links in English with no Spanish', () => {
 });
 
 it('Has the frontend links in Spanish', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('es');
 	render(
-		<LenguaProvider languageCode={'es'}>
+		<LenguaProvider>
 			<FrontendTechLinks />
 		</LenguaProvider>
 	);
@@ -55,8 +62,10 @@ it('Has the frontend links in Spanish', () => {
 });
 
 it('Has the frontend links in Spanish with no English', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('es');
 	render(
-		<LenguaProvider languageCode={'es'}>
+		<LenguaProvider>
 			<FrontendTechLinks />
 		</LenguaProvider>
 	);
@@ -71,8 +80,10 @@ it('Has the frontend links in Spanish with no English', () => {
 });
 
 it('Has the frontend logos with English alt text', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('en');
 	render(
-		<LenguaProvider languageCode={'en'}>
+		<LenguaProvider>
 			<FrontendTechLinks />
 		</LenguaProvider>
 	);
@@ -85,8 +96,10 @@ it('Has the frontend logos with English alt text', () => {
 });
 
 it('Has the frontend logos with Spanish alt text', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('es');
 	render(
-		<LenguaProvider languageCode={'es'}>
+		<LenguaProvider>
 			<FrontendTechLinks />
 		</LenguaProvider>
 	);

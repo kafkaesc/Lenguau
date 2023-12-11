@@ -2,10 +2,13 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { LenguaProvider } from 'context/LenguaContext';
 import LenguaSpan from './LenguaSpan';
+import { useUserSettings } from 'hooks/useUserSettings';
 
 it('Displays the en prop', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('en');
 	render(
-		<LenguaProvider languageCode={'en'}>
+		<LenguaProvider>
 			<LenguaSpan en="hello world" es="hola mundo" />
 		</LenguaProvider>,
 		{ wrapper: MemoryRouter }
@@ -17,8 +20,10 @@ it('Displays the en prop', () => {
 });
 
 it('Displays the es prop', () => {
+	const { setUserLanguage } = useUserSettings();
+	setUserLanguage('es');
 	render(
-		<LenguaProvider languageCode={'es'}>
+		<LenguaProvider>
 			<LenguaSpan en="hello world" es="hola mundo" />
 		</LenguaProvider>,
 		{ wrapper: MemoryRouter }
