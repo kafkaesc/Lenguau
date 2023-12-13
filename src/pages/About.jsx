@@ -5,6 +5,7 @@ import AppBody from 'layout/AppBody';
 import LenguaToggle from 'layout/LenguaToggle';
 import PageTitle from 'layout/PageTitle';
 import AboutTheBackend from 'components/AboutTheBackend';
+import AboutTheFont from 'components/AboutTheFont';
 import AboutTheFrontend from 'components/AboutTheFrontend';
 import AboutTheName from 'components/AboutTheName';
 import BackendTechLinks from 'components/BackendTechLinks';
@@ -51,6 +52,10 @@ export default function About() {
 					<BackendTechLinks />
 				</div>
 				<AboutTheBackend />
+				<H2 className="mb-0">
+					<LenguaSpan en="The Font" es="La Fuente" />
+				</H2>
+				<AboutTheFont />
 			</div>
 		</AppBody>
 	);
