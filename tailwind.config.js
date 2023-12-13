@@ -12,8 +12,8 @@ module.exports = {
 			white: '#fff',
 		},
 		fontFamily: {
-      sans: ['Lato', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif']
-    }
+			sans: ['Lato', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif']
+		}
 	},
 	plugins: [],
 };
