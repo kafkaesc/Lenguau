@@ -11,7 +11,9 @@ module.exports = {
 			red: '#f00',
 			white: '#fff',
 		},
-		extend: {},
+		fontFamily: {
+      sans: ['Lato', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif']
+    }
 	},
 	plugins: [],
 };
