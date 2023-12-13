@@ -9,6 +9,7 @@ import AboutTheFont from 'components/AboutTheFont';
 import AboutTheFrontend from 'components/AboutTheFrontend';
 import AboutTheName from 'components/AboutTheName';
 import BackendTechLinks from 'components/BackendTechLinks';
+import FontLinks from 'components/FontLinks';
 import FrontendTechLinks from 'components/FrontendTechLinks';
 import SocialLinks from 'components/SocialLinks';
 
@@ -55,6 +56,9 @@ export default function About() {
 				<H2 className="mb-0">
 					<LenguaSpan en="The Font" es="La Fuente" />
 				</H2>
+				<div className="text-center">
+					<FontLinks />
+				</div>
 				<AboutTheFont />
 			</div>
 		</AppBody>
