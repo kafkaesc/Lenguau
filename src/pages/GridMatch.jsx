@@ -113,14 +113,18 @@ export default function GridMatch() {
 					/>
 				</PageTitle>
 				<P className="text-center">
-					Round: {round}; Correct: {correctCount}; Wrong: {wrongCount};
+					<LenguaSpan en="Round" es="La Ronda" />: {round};{' '}
+					<LenguaSpan en="Correct" es="Correcto" />: {correctCount};{' '}
+					<LenguaSpan en="Wrong" es="Equivocado" />: {wrongCount};
 				</P>
 			</div>
 			<div className="w-full">
 				{finished ? (
 					<>
 						<Confetti />
-						<P className="text-center text-7xl">Finished!</P>
+						<P className="text-center text-7xl">
+							<LenguaSpan en="Finished!" es="¡Terminado!" />
+						</P>
 					</>
 				) : (
 					<GmGrid
