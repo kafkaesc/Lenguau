@@ -86,7 +86,8 @@ export default function TypeOut() {
 				<LenguaSpan en="Type Out" es="Tecleala" />
 			</PageTitle>
 			<P className="text-center">
-				Correct: {correctCount}; Wrong: {wrongCount};
+				<LenguaSpan en="Correct" es="Correcto" />: {correctCount};{' '}
+				<LenguaSpan en="Wrong" es="Equivocado" />: {wrongCount};
 			</P>
 			<form onSubmit={onSubmit}>
 				<H2>
@@ -100,7 +101,7 @@ export default function TypeOut() {
 					value={enteredWord}
 				/>
 				<Button className="block mx-auto" type="submit">
-					Submit
+					<LenguaSpan en="Submit" es="Enviar" />
 				</Button>
 			</form>
 			{/*<code>Submitted answer: ; Acceptable guesses: en: ; es: ;</code>*/}

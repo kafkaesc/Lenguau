@@ -40,14 +40,17 @@ export default function TwoColumnMatch() {
 					/>
 				</PageTitle>
 				<P className="text-center">
-					Round: {gameState.round}; Correct: {gameState.correct}; Wrong:{' '}
-					{gameState.wrong};
+					<LenguaSpan en="Round" es="La Ronda" />: {gameState.round};{' '}
+					<LenguaSpan en="Correct" es="Correcto" />: {gameState.correct};{' '}
+					<LenguaSpan en="Wrong" es="Equivocado" />: {gameState.wrong};
 				</P>
 			</div>
 			{gameState && gameState.finished ? (
 				<>
 					<Confetti />
-					<P className="text-center text-7xl">Finished!</P>
+					<P className="text-center text-7xl">
+						<LenguaSpan en="Finished!" es="¡Terminado!" />
+					</P>
 				</>
 			) : (
 				<>

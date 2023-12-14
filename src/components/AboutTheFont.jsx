@@ -25,7 +25,7 @@ const En = () => (
 const Es = () => (
 	<>
 		<P>
-			Lenguau usa Lato 1.0, una fuente le diseñó de{' '}
+			Lenguau usa Lato 1.0, una fuente diseñada por{' '}
 			<A href="http://www.lukaszdziedzic.eu" rel="noreferrer" target="_blank">
 				Łukasz Dziedzic
 			</A>{' '}
