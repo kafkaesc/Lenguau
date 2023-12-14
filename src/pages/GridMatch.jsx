@@ -14,14 +14,16 @@ const ROUND_SIZE = 6;
 
 export default function GridMatch() {
 	// TODO: Break game logic out into a hook
-	const [clearedCount, setClearedCount] = useState(0);
-	const [correctCount, setCorrectCount] = useState(0);
-	const [finished, setFinished] = useState(false);
-	const [round, setRound] = useState(1);
+	const [grid, setGrid] = useState([]);
 	const [valueA, setValueA] = useState({});
 	const [valueB, setValueB] = useState({});
-	const [vocab, setVocab] = useState([]);
-	const [wrongCount, setWrongCount] = useState(0);
+	const [gameState, setGameState] = useState({
+		cleared: 0,
+		correct: 0,
+		finished: false,
+		round: 1,
+		wrong: 0,
+	});
 
 	const { categoryTitle } = useParams();
 	const { shuffle } = useGameAction();
@@ -53,14 +55,14 @@ export default function GridMatch() {
 					{ cleared: false, languageCode: 'es', ...vo },
 				];
 			});
-			setVocab(shuffle(vocabList));
+			setGrid(shuffle(vocabList));
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [categoryTitle, vocabBox.title]);
 
 	useEffect(() => {
 		function tagCleared() {
-			const newVocab = vocab.map((vo) => {
+			const newVocab = grid.map((vo) => {
 				if (
 					(vo.languageCode === valueA.languageCode && vo.en === valueA.en) ||
 					(vo.languageCode === valueB.languageCode && vo.en === valueB.en)
@@ -69,39 +71,55 @@ export default function GridMatch() {
 				}
 				return vo;
 			});
-			setVocab(newVocab);
+			setGrid(newVocab);
 		}
 
 		if (valueA.en && valueB.en && valueA.en === valueB.en) {
-			setCorrectCount((prev) => prev + 1);
-			setClearedCount((prev) => prev + 1);
+			setGameState((prev) => {
+				const newState = { ...prev };
+				newState.correct += 1;
+				newState.cleared += 1;
+				return newState;
+			});
 			tagCleared();
 			clearSelection();
 		} else if (valueA.en && valueB.en && valueA.en !== valueB.en) {
-			setWrongCount((prev) => prev + 1);
+			setGameState((prev) => {
+				const newState = { ...prev };
+				newState.wrong += 1;
+				return newState;
+			});
 			clearSelection();
 		}
-	}, [valueA, valueB, vocab]);
+	}, [valueA, valueB, grid]);
 
 	useEffect(() => {
-		if (vocab.length && clearedCount * 2 === vocab.length) {
-			if (vocabBox.hasRound(round + 1)) {
-				let newVocab = vocabBox.getRound(round + 1);
+		if (grid.length && gameState.cleared * 2 === grid.length) {
+			if (vocabBox.hasRound(gameState.round + 1)) {
+				let newVocab = vocabBox.getRound(gameState.round + 1);
 				newVocab = newVocab.flatMap((vo) => {
 					return [
 						{ cleared: false, languageCode: 'en', ...vo },
 						{ cleared: false, languageCode: 'es', ...vo },
 					];
 				});
-				setVocab(shuffle(newVocab));
-				setClearedCount(0);
-				setRound((prev) => prev + 1);
+				setGrid(shuffle(newVocab));
+				setGameState((prev) => {
+					const newState = { ...prev };
+					newState.cleared = 0;
+					newState.round += 1;
+					return newState;
+				});
 			} else {
-				setFinished(true);
+				setGameState((prev) => {
+					const newState = { ...prev };
+					newState.finished = true;
+					return newState;
+				});
 			}
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [clearedCount]);
+	}, [gameState.cleared]);
 
 	return (
 		<AppBody>
@@ -113,13 +131,13 @@ export default function GridMatch() {
 					/>
 				</PageTitle>
 				<P className="text-center">
-					<LenguaSpan en="Round" es="La Ronda" />: {round};{' '}
-					<LenguaSpan en="Correct" es="Correcto" />: {correctCount};{' '}
-					<LenguaSpan en="Wrong" es="Equivocado" />: {wrongCount};
+					<LenguaSpan en="Round" es="La Ronda" />: {gameState.round};{' '}
+					<LenguaSpan en="Correct" es="Correcto" />: {gameState.correct};{' '}
+					<LenguaSpan en="Wrong" es="Equivocado" />: {gameState.wrong};
 				</P>
 			</div>
 			<div className="w-full">
-				{finished ? (
+				{gameState.finished ? (
 					<>
 						<Confetti />
 						<P className="text-center text-7xl">
@@ -131,7 +149,7 @@ export default function GridMatch() {
 						select={selectValue}
 						selectedA={valueA}
 						selectedB={valueB}
-						vocab={vocab}
+						vocab={grid}
 					/>
 				)}
 			</div>
