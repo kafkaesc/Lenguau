@@ -113,9 +113,9 @@ export function useGmRunner(categoryTitle, roundSize) {
 		bilingualTitle: vocabBox.title,
 		clearSelection,
 		gameState,
+		grid,
 		selectValue,
 		valueA,
 		valueB,
-		grid,
 	};
 }
