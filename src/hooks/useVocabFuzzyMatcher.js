@@ -1,5 +1,5 @@
 /**
- * This hooks provides functions to help fuzzy match the vocabulary in some
+ * This hook provides functions to help fuzzy match the vocabulary in some
  * of the Lenguau games. Functions will do things like remove accents, remove
  * articles, or other changes to test for fuzzy matches.
  * @returns Functions for fuzzy matching vocabulary related strings
