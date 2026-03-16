@@ -4,44 +4,40 @@ Built by Jared Hettinger
 
 This project is a work in progress. It will eventually develop into a webapp for practicing English/Spanish vocabulary.
 
-A working version of this site can be viewed at https://www.lenguau.com
+Lenguau is hosted at [lenguau.com](https://www.lenguau.com)
 
-The full code for this project can be viewed at https://github.com/kafkaesc/Lenguau
+The code for this project is hosted at [github.com/kafkaesc/lenguau](https://github.com/kafkaesc/Lenguau)
 
-The full code for the Lenguau API can be viewed at https://github.com/kafkaesc/Lenguau-API
+The code for the Lenguau API is hosted at [github.com/kafkaesc/Lenguau-API](https://github.com/kafkaesc/Lenguau-API)
 
-## To Run
+## 📋 Prerequisites
 
-1. Navigate to the project folder
-1. Run `npm install`
+- Node
+- npm
+
+## 📦 Installation & Operation
+
+After first downloading this project, run `npm install` to install the node modules.
+
+Once the project is installed, running it just takes two steps:
+
 1. Run the Tailwind watcher `npx tailwindcss -i ./src/input.css -o ./src/output.css --watch`
 1. Run the app `npm start`
 
-## To Test
+## 🛠️ Tech Stack
 
-1. Navigate to the project folder
-1. Run `npm test`
+- React 18
+- React Router 6
+- Tailwind 3
 
-# ¡Lenguau!
+### Libraries
+- Heroicons
+- React Confetti
 
-Construido por Jared Hettinger
+## 🎯 Testing
 
-Este proyecto es un trabajo en progreso. Va a ser un webapp para practicar vocabulario de español/inglés.
+`npm test` - Runs Jest in watch mode, re-running tests automatically as files change
 
-Una versión operativa del sitio está en https://www.lenguau.com
+## ⚖️ License
 
-El código completo para el proyecto está en https://github.com/kafkaesc/Lenguau
-
-El código completo para la Lenguau API está en https://github.com/kafkaesc/Lenguau-API
-
-## Para Ejecutarlo
-
-1. Vaya al fólder del proyecto
-1. Ejecute `npm install`
-1. Ejecute el mirador de Tailwind `npx tailwindcss -i ./src/input.css -o ./src/output.css --watch`
-1. Ejecute el app `npm start`
-
-## Para Probar
-
-1. Vaya al fólder del proyecto
-1. Ejecute `npm test`
+This project is licensed under the [MIT License](LICENSE.md).
