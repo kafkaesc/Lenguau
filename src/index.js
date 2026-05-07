@@ -36,7 +36,7 @@ const router = createBrowserRouter([
 			{ path: '/TypeOut/:categoryTitle', element: <TypeOut /> },
 		],
 	},
-]);
+], { future: { v7_startTransition: true } });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

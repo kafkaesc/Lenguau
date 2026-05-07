@@ -22,10 +22,10 @@ export function useVocabFuzzyMatcher() {
 			rmString = rmString.substring(3);
 		} else if (rmString.substring(0, 3) === 'la ') {
 			rmString = rmString.substring(3);
-		} else if (rmString.substring(0, 3) === 'las ') {
-			rmString = rmString.substring(3);
-		} else if (rmString.substring(0, 3) === 'los ') {
-			rmString = rmString.substring(3);
+		} else if (rmString.substring(0, 4) === 'las ') {
+			rmString = rmString.substring(4);
+		} else if (rmString.substring(0, 4) === 'los ') {
+			rmString = rmString.substring(4);
 		} else if (rmString.substring(0, 3) === 'un ') {
 			rmString = rmString.substring(3);
 		} else if (rmString.substring(0, 4) === 'una ') {
