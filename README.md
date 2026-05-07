@@ -19,7 +19,7 @@ The code for the Lenguau API is hosted at [github.com/kafkaesc/Lenguau-API](http
 
 After first downloading this project, run `npm install` to install the node modules.
 
-Once the project is installed, running it just takes two steps:
+Once the project is installed, running it takes two steps:
 
 1. Run the Tailwind watcher `npx tailwindcss -i ./src/input.css -o ./src/output.css --watch`
 1. Run the app `npm start`
@@ -31,12 +31,17 @@ Once the project is installed, running it just takes two steps:
 - Tailwind 3
 
 ### Libraries
+
 - Heroicons
 - React Confetti
 
 ## 🎯 Testing
 
-`npm test` - Runs Jest in watch mode, re-running tests automatically as files change
+Tests are written with [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
+
+- `npm run test` - Run Jest tests and displays the results
+- `npm run test:coverage` - Runs Jest tests and displays the coverage for the project
+- `npm run test:watch` - Runs Jest in watch mode, re-running tests automatically as files change
 
 ## ⚖️ License
 
